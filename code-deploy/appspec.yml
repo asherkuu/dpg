@@ -6,8 +6,8 @@ os: linux
 # scource 는 프로젝트 기준
 # destination 은 instance 기준으로 이력하고 source가 destination 으로 복사가 된다.
 files:
-  - source: ./code-deploy
-    destination: /home/ec2-user/build
+  - source: /
+    destination: /home/ec2-user/build/
 # location 은 프로젝트 기준으로 위치를 작성함
 # runas 를 입력하지 않으면 간혹 permission error 발생 ec2-user or root 기입
 hook:
