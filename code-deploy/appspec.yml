@@ -10,7 +10,7 @@ files:
     destination: /home/ec2-user/build/
 # location 은 프로젝트 기준으로 위치를 작성함
 # runas 를 입력하지 않으면 간혹 permission error 발생 ec2-user or root 기입
-hook:
-  AfterInstall:    
-    - location: ./code-deploy/start.sh    
-      runas: ec2-user
+#hook:
+#  AfterInstall:    
+#    - location: ./code-deploy/start.sh    
+#      runas: ec2-user
