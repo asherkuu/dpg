@@ -1,0 +1,16 @@
+# /appspec.yml
+# yml파일 특성항 빈칸 개수를 중시해야하고 Tab을 사용하면 안된다. Spacebar 2칸으로 해결
+version: 0.0
+# ec2-user 의 OS
+os: linux
+# scource 는 프로젝트 기준
+# destination 은 instance 기준으로 이력하고 source가 destination 으로 복사가 된다.
+files:
+  - source: /code-deploy
+    destination: /home/ubuntu/build
+# location 은 프로젝트 기준으로 위치를 작성함
+# runas 를 입력하지 않으면 간혹 permission error 발생 ec2-user or root 기입
+hook:
+  AfterInstall:    
+    - location: /code-deploy/start.sh    
+      runas: ec2-user
