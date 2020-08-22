@@ -4,8 +4,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
- * @Class Name : SignInContorller.java
- * @Description : SignInContorller Class
+ * @Class Name  : SignInContorller.java
+ * @Description : SignInContorller.Class
  * @Modification Information
  * @
  * @ Update date    Update Admin  	Update Comment

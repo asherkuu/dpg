@@ -360,6 +360,13 @@
 		</dependency>
 		-->
 		
+		<!-- Connecting to SSH -->
+		<dependency>
+		    <groupId>com.jcraft</groupId>
+		    <artifactId>jsch</artifactId>
+		    <version>0.1.55</version>
+		</dependency>
+		
 	<!-- ADDITIONAL DEPENDENCIES -->  
        
 	</dependencies>

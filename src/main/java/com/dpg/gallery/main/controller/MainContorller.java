@@ -9,8 +9,8 @@ import org.springmodules.validation.commons.DefaultBeanValidator;
 import egovframework.rte.fdl.property.EgovPropertyService;
 
 /**
- * @Class Name : MainContorller.java
- * @Description : MainContorller Class
+ * @Class Name  : MainContorller.java
+ * @Description : MainContorller.Class
  * @Modification Information
  * @
  * @ Update date    Update Admin  	Update Comment
@@ -21,7 +21,6 @@ import egovframework.rte.fdl.property.EgovPropertyService;
  * @since 2020.08.21
  * @version 1.0
  */
-
 @Controller
 @RequestMapping(value = "/gallery")
 public class MainContorller {

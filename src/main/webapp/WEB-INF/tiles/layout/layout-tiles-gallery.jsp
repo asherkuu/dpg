@@ -5,6 +5,12 @@
 
 <c:set var="ctxPath" value="${pageContext.request.contextPath}" />
 
+
+<%
+	// localhost:port/ or ip:port/
+	String ctxPath2 = request.getContextPath();
+%>
+
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
