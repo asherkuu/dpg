@@ -12,13 +12,27 @@
 			</list>
 		</property>
 	</bean>
-     
+	
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://18.216.21.171:3306/dpg_db?serverTimezone=UTC&amp;useSSL=false&amp;autoReconnection=true&amp;allowPublicKeyRetrieval=true&amp;useSSL=false" />		
+		<property name="username" value="dpg_db" />
+		<property name="password" value="!!dpg1234" />
+	</bean>
+	
+    <!--  
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="${Globals.DriverClassName}" />
+		<property name="url" value="${Globals.UrlType}://${Globals.UrlIp}:${Globals.UrlPort}/${Globals.UrlDbName}?serverTimezone=UTC&amp;useSSL=false&amp;autoReconnection=true&amp;allowPublicKeyRetrieval=true&amp;useSSL=false" />		
+		<property name="username" value="${Globals.UserName}" />
+		<property name="password" value="${Globals.Password}" />
+	</bean>
+    --> 
+    
     <!-- 
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 		<property name="driverClassName" value="${Globals.DriverClassName}" />
-		<property name="url" 
-		value="${Globals.UrlType}://${Globals.UrlIp}:${Globals.UrlPort}/${Globals.UrlDbName}?serverTimezone=UTC&amp;useSSL=false&amp;autoReconnection=true&amp;allowPublicKeyRetrieval=true&amp;useSSL=false" />
-		
+		<property name="url" value="${Globals.UrlType}://${Globals.UrlIp}:${Globals.UrlPort}/${Globals.UrlDbName}?serverTimezone=UTC&amp;useSSL=false&amp;autoReconnection=true&amp;allowPublicKeyRetrieval=true&amp;useSSL=false" />
 		<property name="username" value="${Globals.UserName}" />
 		<property name="password" value="${Globals.Password}" />
 	</bean>

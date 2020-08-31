@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="regist">
+
+	<insert id="registUser" parameterType="map">
+		INSERT INTO DPG_IFO_USR
+		(
+			  USR_NUM
+			, USR_ID
+			, USR_PWD
+			, USR_LPWD
+			, USR_FNAME
+			, USR_LNAME
+			, USR_EMAIL
+			, USR_PHONE
+			, USR_RDATE
+			, USR_RTIME
+			, USR_UDATE
+			, USR_UTIME
+			, USR_LDATE_PWD
+			, USR_STATUS
+		)
+		VALUE 
+		(
+		 	  #{USR_NUM}
+			, #{USR_ID}
+			, #{USR_PWD}
+			, #{USR_PWD}
+			, #{USR_FNAME}
+			, #{USR_LNAME}
+			, #{USR_EMAIL}
+			, #{USR_PHONE}
+			, DATE_FORMAT(NOW(),"%Y%m%d")
+			, DATE_FORMAT(NOW(),"%H%i%S")
+			, DATE_FORMAT(NOW(),"%Y%m%d")
+			, DATE_FORMAT(NOW(),"%H%i%S")
+			, DATE_FORMAT(NOW(),"%Y%m%d")
+			, '0'
+		)
+	</insert>
+
+</mapper>

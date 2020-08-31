@@ -47,7 +47,7 @@ $(function() {
 				
 				// go to regist page
 				$("#btn-account").click(function(){
-					javascript:location.href="/gallery/regist";
+					javascript:location.href="/signIn/regist";
 				});
 			},
 			

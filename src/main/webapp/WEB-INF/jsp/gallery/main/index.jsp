@@ -9,6 +9,8 @@
 				<h2>
 					Hello! Welcome to <br>Dead Poets
 					Gallery
+					<br>
+					${time}
 				</h2>
 			</div>
 		</div>

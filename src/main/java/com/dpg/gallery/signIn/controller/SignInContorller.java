@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 
 @Controller
-@RequestMapping(value = "/gallery")
+@RequestMapping(value = "/signIn")
 public class SignInContorller {
 
 	/**
@@ -28,7 +28,7 @@ public class SignInContorller {
 	 * @return "egovSampleList"
 	 * @exception Exception
 	 */
-	@RequestMapping(value = "/signIn")
+	@RequestMapping(value = "/sign")
 	public String selectSign() throws Exception {
 		return "gallery/sign/signIn.ga";
 	}

@@ -37,7 +37,7 @@ $(function() {
 		상단 메뉴 active 이벤트
 	----------*/
 	var url = document.location.href; // ex) http://domain/index/preview
-	var crrClass = url.split('/')[4];
+	var crrClass = url.split('/')[3];
 	
 	if(crrClass != undefined && crrClass != "") {
 		var lenCrrClass = crrClass.length;

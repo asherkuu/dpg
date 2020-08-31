@@ -51,8 +51,8 @@
 						<input type="text" placeholder="ID *">
 						<input type="password" class="input-half" placeholder="Password *">
 						<input type="password" class="input-half" placeholder="Confirm Password *">
-						<input type="text" placeholder="Email *">
-						<input type="tel" placeholder="Phone *">
+						<input type="text" placeholder="Email">
+						<input type="tel" placeholder="Phone">
 						<button class="site-btn">Create Account</button>
 					</form>
 				</div>

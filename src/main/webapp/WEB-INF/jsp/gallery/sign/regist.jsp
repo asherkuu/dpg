@@ -4,59 +4,29 @@
 
 <section class="contact_section spad">
 	<div class="container">
+		<form name="regist_form" class="regist_form">
 		<div class="row">
 			<div class="col-lg-4">
 				<div class="img-area">
 					<img id="img-preivew" class="img-preview" src="/resources/img/no-image.jpg">
-					<input type="file" id="img-file">
+					<input type="file" id="img-file" name="img-file">
 				</div>
-			
-			
-<!-- 				<div class="contact_logo"> -->
-<!-- 					<img src="/resources/img/contact-logo.png" alt=""> -->
-<!-- 				</div> -->
-<!-- 				<div class="contact_info"> -->
-<!-- 					<h3>Address:</h3> -->
-<!-- 					<p>01 Pascale Springs Apt. 339, NY City United State</p> -->
-<!-- 					<a href="#">View In Map</a> -->
-<!-- 				</div> -->
-<!-- 				<div class="row"> -->
-<!-- 					<div class="col-lg-5 col-sm-4"> -->
-<!-- 						<div class="contact_info"> -->
-<!-- 							<h3>Phone:</h3> -->
-<!-- 							<p>+123 4567 8910</p> -->
-<!-- 						</div> -->
-<!-- 					</div> -->
-<!-- 					<div class="col-lg-6 col-sm-6"> -->
-<!-- 						<div class="contact_info"> -->
-<!-- 							<h3>Email:</h3> -->
-<!-- 							<p> -->
-<!-- 								<a href="/cdn-cgi/l/email-protection" class="_cf_email_" -->
-<!-- 									data-cfemail="a0e3cfcccfd2ccc9c28ec9cec6cfe0c7cdc1c9cc8ec3cfcd">[email&#160;protected]</a> -->
-<!-- 							</p> -->
-<!-- 						</div> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
-<!-- 				<div class="contact_info"> -->
-<!-- 					<h3>Working Hours:</h3> -->
-<!-- 					<p>08.00am - 21.00pm Weekdays</p> -->
-<!-- 				</div> -->
 			</div>
 			<div class="col-lg-8">
 				<div class="contact_form_box">
-					<h2>Regist</h2>
-					<form class="regist-from" name="regist-from">
-						<input type="text" class="input-half" placeholder="Last Name *">
-						<input type="text" class="input-half" placeholder="First Name *"> 
-						<input type="text" placeholder="ID *">
-						<input type="password" class="input-half" placeholder="Password *">
-						<input type="password" class="input-half" placeholder="Confirm Password *">
-						<input type="text" placeholder="Email">
-						<input type="tel" placeholder="Phone">
-						<button class="site-btn">Create Account</button>
-					</form>
+					<h2>REGIST</h2>
+					<input type="text" id="USR_LNAME" name="USR_LNAME" class="input-half i-left" placeholder="Last Name *" required>
+					<input type="text" id="USR_FNAME" name="USR_FNAME" class="input-half i-right" placeholder="First Name *" required> 
+					<input type="text" id="USR_ID" name="USR_ID" placeholder="ID *" required>
+					<input type="password" id="USR_PWD"  name="USR_PWD" class="input-half i-left" placeholder="Password *" required
+					data-toggle="tooltip" data-placement="top" title="Tooltip on top">
+					<input type="password" id="USR_CPWD" name="USR_CPWD" class="input-half i-right" placeholder="Confirm Password *" required>
+					<input type="text" id="USR_EMAIL" name="USR_EMAIL" 	placeholder="Email">
+					<input type="text" id="USR_PHONE"  name="USR_PHONE" placeholder="Phone">
+					<button id="btnCreate" class="site-btn">Create Account</button>
 				</div>
 			</div>
 		</div>
+		</form>
 	</div>
 </section>

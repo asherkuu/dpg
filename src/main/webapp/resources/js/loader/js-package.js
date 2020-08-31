@@ -13,6 +13,7 @@ var AppLibFiles = {
 			Ref : [
 				
 				"resources/js/util/jquery-3.3.1.min.js",				// jquery
+				"resources/js/util/bootstrap.min.js",					// bootstrap
 				"resources/js/util/jquery.slicknav.min.js",				// jquery.slicknav
 				"resources/js/util/jquery.magnific-popup.min.js",		// jquery.magnific-popup
 				"resources/js/util/owl.carousel.min.js",				// owl.carousel

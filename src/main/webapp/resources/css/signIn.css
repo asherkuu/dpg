@@ -76,8 +76,16 @@
 	margin-bottom:151px;
 }
 
-.regist-from .input-half {
-	width: 48%;
+.regist_form .input-half {
+	width: 49%;
+}
+
+.regist_form .input-half.i-left {
+	float: left;
+}
+
+.regist_form .input-half.i-right{
+	float: right;
 }
 
 .img-preview {

@@ -20,5 +20,6 @@
         </tr>
     </table>
     <h3>ERROR</h3>
+    <h2>Sorry but we couldn't find this page</h2>
 </body>
 </html>

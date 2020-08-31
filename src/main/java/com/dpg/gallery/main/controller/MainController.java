@@ -4,9 +4,10 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
-import egovframework.rte.fdl.property.EgovPropertyService;
+import com.dpg.gallery.main.service.MainService;
 
 /**
  * @Class Name  : MainContorller.java
@@ -14,7 +15,7 @@ import egovframework.rte.fdl.property.EgovPropertyService;
  * @Modification Information
  * @
  * @ Update date    Update Admin  	Update Comment
- * @ ------	------   	----------------
+ * @ ------------   ------------	--------------------------------
  * @ 2020.08.21 	Asher       	The first write
  *
  * @author Asher
@@ -22,12 +23,11 @@ import egovframework.rte.fdl.property.EgovPropertyService;
  * @version 1.0
  */
 @Controller
-@RequestMapping(value = "/gallery")
-public class MainContorller {
+@RequestMapping(value = "/preview")
+public class MainController {
 
-	/** EgovPropertyService */
-	@Resource(name = "propertiesService")
-	protected EgovPropertyService propertiesService;
+	@Resource(name = "mainService")
+	protected MainService mainService;
 
 	/** Validator */
 	@Resource(name = "beanValidator")
@@ -40,9 +40,13 @@ public class MainContorller {
 	 * @return "egovSampleList"
 	 * @exception Exception
 	 */
-	@RequestMapping(value = "/preview")
-	public String selectMain() throws Exception {
-		return "gallery/main/index.ga";
+	@RequestMapping(value = "/")
+	public ModelAndView selectMain(ModelAndView mv) throws Exception {
+		String getTime = mainService.getTime();
+		mv.addObject("time", getTime);
+		System.out.println("getTime : " + getTime);
+		mv.setViewName("gallery/main/index.ga");
+		return mv;
 	}
 
 }
