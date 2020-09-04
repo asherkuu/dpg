@@ -90,7 +90,7 @@ $(function() {
 			initOnInputOption : function() {
 				var _self = this;
 				
-				$('.contact_form_box input').on("input",function(){
+				$('.frame_form_box input').on("input",function(){
 					
 					if(this.name == 'USR_LNAME' || this.name == 'USR_FNAME') {
 						return;
@@ -189,7 +189,7 @@ $(function() {
 				var email_reg 	= /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
 				
 				// error message
-				$('.contact_form_box input').on("focusout", function(){
+				$('.frame_form_box input').on("focusout", function(){
 					var error = '';
 					
 					var valLname 	= $('#USR_LNAME').val().trim(); 

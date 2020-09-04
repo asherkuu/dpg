@@ -9,7 +9,7 @@
 		<div class="row">
 
 			<div class="col-lg-8">
-				<div class="contact_form_box">
+				<div class="frame_form_box">
 					<h2>Sign-In</h2>
 					<form name="signIn_form" id="signIn_form">
 						<input type="text" 		id="USR_ID"  name="USR_ID" placeholder="Your Id"> 
@@ -23,7 +23,7 @@
 			<div class="col-lg-4">
 				<div class="pt-50">
 					<div class="create-account">
-						<div class="contact_info">
+						<div class="frame_info">
 							<h3>New Customer ?</h3>
 						</div>
 						<input type="button" class="btn-black btnAccount" id="btnAccount" value="Create Your DPG Account" />						
@@ -32,7 +32,7 @@
 				
 				<div class="">				
 					<section class="sns-login-wrap">
-						<div class="contact_info">
+						<div class="frame_info">
 							<p>Quick Access With</p>
 						</div>
 						

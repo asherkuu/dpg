@@ -10,7 +10,7 @@
 		<div class="row">
 
 			<div class="col-lg-8">
-				<div class="contact_form_box">
+				<div class="frame_form_box">
 					<h2>REGIST</h2>
 					<div>
 						<input type="text" id="USR_LNAME" name="USR_LNAME" class="input-half i-left" required placeholder="Last Name *"  maxlength="50">

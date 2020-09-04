@@ -1,8 +1,6 @@
 /* ===================================
 -------------------
-	UNZINE | Photography HTML Template
 	Version: 1.0
-	Copyright By: ColorLib
 -------------------
 ======================================*/
 
@@ -11,14 +9,33 @@
 $(function() {	
 
 	/*---------
-		Preloder
+		프리로더
 	----------*/
+	
 	$(".loader").fadeOut();
-	$("#preloder").delay(400).fadeOut("slow");
+	$("#preloder").delay(250).fadeOut("slow");
+	
+	/*---------
+		메인프레임 메뉴 스크롤 이벤트
+	----------*/
+	
+	$('.filter-controls').on('click', function(e) {
+		var screenWidth = window.innerWidth;
+		if(screenWidth > 992) {
+			$('html').animate({scrollTop:770}, 500);
+		} else if(screenWidth <= 992 && screenWidth >= 768) {
+			$('html').animate({scrollTop:760}, 500);
+		} else if(screenWidth < 768 && screenWidth >= 576) {
+			$('html').animate({scrollTop:835}, 500);
+		}  else if(screenWidth <= 576 && screenWidth >= 280) {
+			$('html').animate({scrollTop:825}, 500);
+		}		
+	});
 	
 	/*---------
 		메인프레임 메뉴 이벤트
 	----------*/
+	
 	$('.filter-controls li').on('click', function() {
 		$('.filter-controls li').removeClass('active');
 		$(this).addClass('active');
@@ -48,13 +65,13 @@ $(function() {
 		}
 	}
 	
-	if(crrClass == undefined) { // 초기화면 로드시 (http://domain)
-		$('.mobile_menu #home').addClass('menu-active');
-		$('.main_menu #home').addClass('menu-active');
+	if(crrClass == undefined || crrClass == "") { // 초기화면 로드시 (http://domain)
+		$('.mobile_menu #preview').addClass('menu-active');
+		$('.main_menu #preview').addClass('menu-active');
+	} else {
+		$('.main_menu #'+crrClass+'').removeClass('menu-active');
+		$('.main_menu #'+crrClass+'').addClass('menu-active');
 	}
-	
-	$('.main_menu #'+crrClass+'').removeClass('menu-active');
-	$('.main_menu #'+crrClass+'').addClass('menu-active');
 	
 	/*---------
 		Background Set
@@ -121,18 +138,47 @@ $(function() {
 		e.preventDefault();
 	});
 
-	/*----------
-		사진클릭 이벤트
-	----------*/
-	$('.gallery_img').magnificPopup({
-		type:'image',
-		gallery:{
-			enabled:true
-		}
+	$('#btnViewMore').on('click', function() {
+		javascript:location.href="/articles/view";
 	});
 	
 	/*----------
-		Albums Slider
+		사진클릭 이벤트
+	----------*/
+	var filter = '';
+	
+	if(filter == '' || filter.length <= 0) {
+		filter = $(".gallery_img");
+	}
+	
+	// init
+	$(filter).magnificPopup({
+		type:'image',
+		gallery:{
+			enabled:true,
+		},
+	});
+	
+	// set
+	$('.filter-controls').on("click", function(){
+		var selectedFilter = $('.filter-controls .active').text().toLowerCase();
+		
+		if(selectedFilter == "all") {
+			filter = $(".gallery_img");
+		} else {
+			filter = $(".gallery_img.set-bg." + selectedFilter);
+		}
+		
+		filter.magnificPopup({
+			type:'image',
+			gallery:{
+				enabled:true,
+			},
+		});
+	});
+	
+	/*----------
+		슬라이더
 	----------*/
 	var sync1 = $(".album_slider");
 	var sync2 = $(".album_thumb_slider");
@@ -160,6 +206,8 @@ $(function() {
 		responsiveRefreshRate: 100,
 		items: 8,
 		slideBy: 8,
+		autoWidth:true,
+		autoHeight:true,
 		responsive : {
 			0 : {
 				items: 2,
@@ -194,9 +242,8 @@ $(function() {
 	    if (current > count) {
 	        current = 0;
 	    }
-	
 	    //end block
-	
+
 	    sync2
 	        .find(".owl-item")
 	        .removeClass("current")
@@ -213,7 +260,7 @@ $(function() {
 	        sync2.data('owl.carousel').to(current - onscreen, 100, true);
 	    }
 	}
-	
+
 	function syncPosition2(el) {
 	    if (syncedSecondary) {
 	        var number = el.item.index;
@@ -226,5 +273,6 @@ $(function() {
 	    var number = $(this).index();
 	    sync1.data('owl.carousel').to(number, 300, true);
 	});
+
 	
 }); 

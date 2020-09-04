@@ -141,7 +141,7 @@
 }
 
 @media(max-width: 992px) {
-	.contact_info, .contact_info p {
+	.frame_info, .frame_info p {
 		text-align: center;
 	    max-width: 100%;
 	}
@@ -184,7 +184,7 @@
 		font-size: 11px;
 		top: 25px;
 	}
-	.contact_form_box a {
+	.frame_form_box a {
 		font-size: 14px;
 	}
 	.img-area input {

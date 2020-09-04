@@ -86,7 +86,7 @@ $(function() {
 			initOnInputOption : function() {
 				var _self = this;
 				
-				$('.contact_form_box input').on("input",function(){					
+				$('.frame_form_box input').on("input",function(){					
 					
 					this.value = this.value.replace(/ /g, ''); // 공백제거
 					

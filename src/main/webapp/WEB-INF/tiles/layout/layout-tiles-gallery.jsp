@@ -24,11 +24,21 @@
 
 <!-- load JS files -->
 <script src="${ctxPath}/resources/js/loader/js-package.js"></script>
-<script src="${ctxPath}/resources/js/loader/js-loader.js"></script>
+<script src="${ctxPath2}/resources/js/loader/js-loader.js"></script>
+
+<script type="text/javascript">
+alert("ctxPath : "+${ctxPath});
+alert("ctxPath : "+${ctxPath2});
+	console.log('%c DPG', `font-size: 130px; background: url(http://localhost:8080/resources/img/dpg-logo.png) no-repeat;`)
+</script>
 
 </head>
 
 <body>
+	<div id="preloder">
+		<div class="loader"></div>
+	</div>
+
 	<div id="ga_container">
 		<div id="ts_header">
 			<tiles:insertAttribute name="ts_header" />

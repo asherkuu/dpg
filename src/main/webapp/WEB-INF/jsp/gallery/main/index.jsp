@@ -3,20 +3,120 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <section class="hero">
-	<div class="container">
+	<div class="container main_area">
 		<div class="row">
-			<div class="col-lg-10 m-auto">
-				<h2>
-					Hello 
-					<c:if test="${not empty sessionScope.loginuser}">
-						<c:set var="user" value="${sessionScope.loginuser}"/>
-						${user.USR_ID}
-					</c:if>
-					!
+		
+			<div class="col-lg-7 m-auto">
+				<div class="album_slider owl-carousel owl-loaded owl-drag">
+					<div class="owl-stage-outer">
+						<div class="owl-stage">
+
+							<div class="owl-item active">
+								<div class="album_slide set-bg"
+									data-setbg="/resources/img/1.jpg"
+									style="background-image: url(&quot;/resources/img/1.jpg&quot;); height: 410px;">
+								</div>
+							</div>
+							<div class="owl-item">
+								<div class="album_slide set-bg"
+									data-setbg="/resources/img/2.jpg"
+									style="background-image: url(&quot;/resources/img/2.jpg&quot;); height: 410px;">
+								</div>
+							</div>
+							<div class="owl-item">
+								<div class="album_slide set-bg"
+									data-setbg="/resources/img/3.jpg"
+									style="background-image: url(&quot;/resources/img/3.jpg&quot;); height: 410px;">
+								</div>
+							</div>
+							<div class="owl-item active">
+								<div class="album_slide set-bg"
+									data-setbg="/resources/img/1.jpg"
+									style="background-image: url(&quot;/resources/img/1.jpg&quot;); height: 410px;">
+								</div>
+							</div>
+							<div class="owl-item">
+								<div class="album_slide set-bg"
+									data-setbg="/resources/img/2.jpg"
+									style="background-image: url(&quot;/resources/img/2.jpg&quot;); height: 410px;">
+								</div>
+							</div>
+							<div class="owl-item">
+								<div class="album_slide set-bg"
+									data-setbg="/resources/img/3.jpg"
+									style="background-image: url(&quot;/resources/img/3.jpg&quot;); height: 410px;">
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="owl-nav">
+						<button type="button" role="presentation" class="owl-prev">
+							<i class="fa fa-angle-left"></i>
+						</button>
+						<button type="button" role="presentation" class="owl-next">
+							<i class="fa fa-angle-right"></i>
+						</button>
+					</div>
+					<div class="owl-dots disabled"></div>
+				</div>
+				
+				<div class="album_thumb_slider owl-carousel owl-loaded owl-drag">
+					<div class="owl-stage-outer">
+						<div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 1127px;">
+						
+							<div class="owl-item active">
+								<div class="album_slide_thumb set-bg">
+									<img src="/resources/img/1.jpg" alt="">
+								</div>
+							</div>
+							<div class="owl-item active">
+								<div class="album_slide_thumb set-bg">
+									<img src="/resources/img/2.jpg" alt="">
+								</div>
+							</div>
+							<div class="owl-item active">
+								<div class="album_slide_thumb set-bg">
+									<img src="/resources/img/3.jpg" alt="">
+								</div>
+							</div>
+							<div class="owl-item active">
+								<div class="album_slide_thumb set-bg">
+									<img src="/resources/img/1.jpg" alt="">
+								</div>
+							</div>
+							<div class="owl-item active">
+								<div class="album_slide_thumb set-bg">
+									<img src="/resources/img/2.jpg" alt="">
+								</div>
+							</div>
+							<div class="owl-item active">
+								<div class="album_slide_thumb set-bg">
+									<img src="/resources/img/3.jpg" alt="">
+								</div>
+							</div>
+							
+						</div>
+					</div>
+					<div class="owl-nav disabled">
+						<button type="button" role="presentation" class="owl-prev">
+							<span aria-label="Previous">‹</span>
+						</button>
+						<button type="button" role="presentation" class="owl-next">
+							<span aria-label="Next">›</span>
+						</button>
+					</div>
+					<div class="owl-dots disabled"></div>
+				</div>
+
+			</div>
+			
+			<div class="col-lg-4">
+				<div class="frame_info new">
+					<h2>IT IS NEW !</h2>
 					<br>
-					Welcome to Dead Poets
-					Gallery
-				</h2>
+					<h3>Asher Kim</h3>
+					<button id="btnViewMore" class="view_more">View More</button>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -26,34 +126,41 @@
 	<div class="filter-controls">
 		<ul>
 			<li class="active" data-filter="*">ALL</li>
+			<li data-filter=".yet">YET</li>
+			<li data-filter=".done">DONE</li>
+
+			<!--  
 			<li data-filter=".photo">PHOTOGRAPHY</li>
 			<li data-filter=".travel">TRAVEL</li>
 			<li data-filter=".natural">NATURE</li>
 			<li data-filter=".fashion">FASHION</li>
 			<li data-filter=".lifestyle">LIFE STYLE</li>
+			-->
 		</ul>
 	</div>
 	<div class="gallery_warp" id="MixItUp1BE6E7">
-		<div class="mix grid_item grid-1 photo">
-			<a class="gallery_img set-bg" href="/resources/img/1.jpg"
-				data-setbg="/resources/img/1.jpg" style="background-image: url(&quot;/resources/img/1.jpg&quot;);">
+		<div class="mix grid_item grid-1 yet">
+			<a class="gallery_img set-bg yet" href="/resources/img/1.jpg"
+				data-setbg="/resources/img/1.jpg"
+				style="background-image: url(&quot;/resources/img/1.jpg&quot;);">
 				<div class="gellery_text">
 					<span>Photography / Flower</span>
 					<h3>Flower In Door</h3>
 				</div>
 			</a>
 		</div>
-		<div class="mix grid_item grid-2 travel">
-			<a class="gallery_img set-bg" href="/resources/img/3.jpg"
-				data-setbg="/resources/img/3.jpg" style="background-image: url(&quot;/resources/img/3.jpg&quot;);">
+		<div class="mix grid_item grid-2 yet">
+			<a class="gallery_img set-bg yet" href="/resources/img/3.jpg"
+				data-setbg="/resources/img/3.jpg"
+				style="background-image: url(&quot;/resources/img/3.jpg&quot;);">
 				<div class="gellery_text">
 					<span>Photography / Flower</span>
 					<h3>Flower In Door</h3>
 				</div>
 			</a>
 		</div>
-		<div class="mix grid_item grid-3 natural">
-			<a class="gallery_img set-bg" href="/resources/img/2.jpg"
+		<div class="mix grid_item grid-3 done">
+			<a class="gallery_img set-bg done" href="/resources/img/2.jpg"
 				data-setbg="/resources/img/2.jpg"
 				style="background-image: url(&quot;/resources/img/2.jpg&quot;);">
 				<div class="gellery_text">
@@ -62,170 +169,70 @@
 				</div>
 			</a>
 		</div>
-		<div class="mix grid_item grid-4 fashion">
-			<a class="gallery_img set-bg" href="/resources/img/4.jpg"
-				data-setbg="/resources/img/4.jpg"
-				style="background-image: url(&quot;/resources/img/4.jpg&quot;);">
+		<div class="mix grid_item grid-4 yet">
+			<a class="gallery_img set-bg yet" href="/resources/img/1.jpg"
+				data-setbg="/resources/img/1.jpg"
+				style="background-image: url(&quot;/resources/img/1.jpg&quot;);">
 				<div class="gellery_text">
 					<span>Photography / Flower</span>
 					<h3>Flower In Door</h3>
 				</div>
 			</a>
 		</div>
-		<div class="mix grid_item grid-5 lifestyle">
-			<a class="gallery_img set-bg" href="/resources/img/5.jpg"
-				data-setbg="/resources/img/5.jpg"
-				style="background-image: url(&quot;/resources/img/5.jpg&quot;);">
+		<div class="mix grid_item grid-5 yet">
+			<a class="gallery_img set-bg yet" href="/resources/img/3.jpg"
+				data-setbg="/resources/img/3.jpg"
+				style="background-image: url(&quot;/resources/img/3.jpg&quot;);">
 				<div class="gellery_text">
 					<span>Photography / Flower</span>
 					<h3>Flower In Door</h3>
 				</div>
 			</a>
 		</div>
-		<div class="mix grid_item grid-6 photo">
-			<a class="gallery_img set-bg" href="/resources/img/19.jpg"
-				data-setbg="/resources/img/19.jpg"
-				style="background-image: url(&quot;/resources/img/19.jpg&quot;);">
+		<div class="mix grid_item grid-6 yet">
+			<a class="gallery_img set-bg yet" href="/resources/img/1.jpg"
+				data-setbg="/resources/img/1.jpg"
+				style="background-image: url(&quot;/resources/img/1.jpg&quot;);">
 				<div class="gellery_text">
 					<span>Photography / Flower</span>
 					<h3>Flower In Door</h3>
 				</div>
 			</a>
 		</div>
-		<div class="mix grid_item grid-4 natural">
-			<a class="gallery_img set-bg" href="/resources/img/6.jpg"
-				data-setbg="/resources/img/6.jpg"
-				style="background-image: url(&quot;/resources/img/6.jpg&quot;);">
+		<div class="mix grid_item grid-7 yet">
+			<a class="gallery_img set-bg yet" href="/resources/img/3.jpg"
+				data-setbg="/resources/img/3.jpg"
+				style="background-image: url(&quot;/resources/img/3.jpg&quot;);">
 				<div class="gellery_text">
 					<span>Photography / Flower</span>
 					<h3>Flower In Door</h3>
 				</div>
 			</a>
 		</div>
-		<div class="mix grid_item grid-8 fashion">
-			<a class="gallery_img set-bg" href="/resources/img/20.jpg"
-				data-setbg="/resources/img/20.jpg"
-				style="background-image: url(&quot;/resources/img/20.jpg&quot;);">
+		<div class="mix grid_item grid-8 done">
+			<a class="gallery_img set-bg done" href="/resources/img/2.jpg"
+				data-setbg="/resources/img/2.jpg"
+				style="background-image: url(&quot;/resources/img/2.jpg&quot;);">
 				<div class="gellery_text">
 					<span>Photography / Flower</span>
 					<h3>Flower In Door</h3>
 				</div>
 			</a>
 		</div>
-		<div class="mix grid_item grid-4 lifestyle">
-			<a class="gallery_img set-bg" href="/resources/img/7.jpg"
-				data-setbg="/resources/img/7.jpg"
-				style="background-image: url(&quot;/resources/img/7.jpg&quot;);">
+		<div class="mix grid_item grid-9 yet">
+			<a class="gallery_img set-bg yet" href="/resources/img/1.jpg"
+				data-setbg="/resources/img/1.jpg"
+				style="background-image: url(&quot;/resources/img/1.jpg&quot;);">
 				<div class="gellery_text">
 					<span>Photography / Flower</span>
 					<h3>Flower In Door</h3>
 				</div>
 			</a>
 		</div>
-		<div class="mix grid_item grid-8 fashion">
-			<a class="gallery_img set-bg" href="/resources/img/8.jpg"
-				data-setbg="/resources/img/8.jpg"
-				style="background-image: url(&quot;/resources/img/8.jpg&quot;);">
-				<div class="gellery_text">
-					<span>Photography / Flower</span>
-					<h3>Flower In Door</h3>
-				</div>
-			</a>
-		</div>
-		<div class="mix grid_item photo">
-			<a class="gallery_img set-bg" href="/resources/img/9.jpg"
-				data-setbg="/resources/img/9.jpg"
-				style="background-image: url(&quot;/resources/img/9.jpg&quot;);">
-				<div class="gellery_text">
-					<span>Photography / Flower</span>
-					<h3>Flower In Door</h3>
-				</div>
-			</a>
-		</div>
-		<div class="mix grid_item grid-9 natural">
-			<a class="gallery_img set-bg" href="/resources/img/18.jpg"
-				data-setbg="/resources/img/18.jpg"
-				style="background-image: url(&quot;/resources/img/18.jpg&quot;);">
-				<div class="gellery_text">
-					<span>Photography / Flower</span>
-					<h3>Flower In Door</h3>
-				</div>
-			</a>
-		</div>
-		<div class="mix grid_item grid-8 fashion">
-			<a class="gallery_img set-bg" href="/resources/img/10.jpg"
-				data-setbg="/resources/img/10.jpg"
-				style="background-image: url(&quot;/resources/img/10.jpg&quot;);">
-				<div class="gellery_text">
-					<span>Photography / Flower</span>
-					<h3>Flower In Door</h3>
-				</div>
-			</a>
-		</div>
-		<div class="mix grid_item grid-10 lifestyle">
-			<a class="gallery_img set-bg" href="/resources/img/11.jpg"
-				data-setbg="/resources/img/11.jpg"
-				style="background-image: url(&quot;/resources/img/11.jpg&quot;);">
-				<div class="gellery_text">
-					<span>Photography / Flower</span>
-					<h3>Flower In Door</h3>
-				</div>
-			</a>
-		</div>
-		<div class="mix grid_item grid-2 photo">
-			<a class="gallery_img set-bg" href="/resources/img/12.jpg"
-				data-setbg="/resources/img/12.jpg"
-				style="background-image: url(&quot;/resources/img/12.jpg&quot;);">
-				<div class="gellery_text">
-					<span>Photography / Flower</span>
-					<h3>Flower In Door</h3>
-				</div>
-			</a>
-		</div>
-		<div class="mix grid_item grid-11 natural">
-			<a class="gallery_img set-bg" href="/resources/img/13.jpg"
-				data-setbg="/resources/img/13.jpg"
-				style="background-image: url(&quot;/resources/img/13.jpg&quot;);">
-				<div class="gellery_text">
-					<span>Photography / Flower</span>
-					<h3>Flower In Door</h3>
-				</div>
-			</a>
-		</div>
-		<div class="mix grid_item grid-12 fashion">
-			<a class="gallery_img set-bg" href="/resources/img/14.jpg"
-				data-setbg="/resources/img/14.jpg"
-				style="background-image: url(&quot;/resources/img/14.jpg&quot;);">
-				<div class="gellery_text">
-					<span>Photography / Flower</span>
-					<h3>Flower In Door</h3>
-				</div>
-			</a>
-		</div>
-		<div class="mix grid_item grid-13 lifestyle">
-			<a class="gallery_img set-bg" href="/resources/img/15.jpg"
-				data-setbg="/resources/img/15.jpg"
-				style="background-image: url(&quot;/resources/img/15.jpg&quot;);">
-				<div class="gellery_text">
-					<span>Photography / Flower</span>
-					<h3>Flower In Door</h3>
-				</div>
-			</a>
-		</div>
-		<div class="mix grid_item grid-11 photo">
-			<a class="gallery_img set-bg" href="/resources/img/17.jpg"
-				data-setbg="/resources/img/17.jpg"
-				style="background-image: url(&quot;/resources/img/17.jpg&quot;);">
-				<div class="gellery_text">
-					<span>Photography / Flower</span>
-					<h3>Flower In Door</h3>
-				</div>
-			</a>
-		</div>
-		<div class="mix grid_item grid-15 natural">
-			<a class="gallery_img set-bg" href="/resources/img/16.jpg"
-				data-setbg="/resources/img/16.jpg"
-				style="background-image: url(&quot;/resources/img/16.jpg&quot;);">
+		<div class="mix grid_item grid-10 yet">
+			<a class="gallery_img set-bg yet" href="/resources/img/3.jpg"
+				data-setbg="/resources/img/3.jpg"
+				style="background-image: url(&quot;/resources/img/3.jpg&quot;);">
 				<div class="gellery_text">
 					<span>Photography / Flower</span>
 					<h3>Flower In Door</h3>
