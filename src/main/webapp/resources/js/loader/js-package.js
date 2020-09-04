@@ -22,6 +22,7 @@ var AppLibFiles = {
 				"resources/js/util/slicknav.min.js",					// slicknav
 				"resources/js/util/analytics.js",						// analytics
 				"resources/js/util/email-decode.min.js",				// email-decode
+				"resources/js/util/sweetalert.js",						// sweetalert
 				
 				/*
 				"resources/js/common/common.js",						// common
@@ -41,10 +42,10 @@ var AppLibFiles = {
 				"resources/js/common/app.js",							// 앱 - 글로벌 객체 생성
 				"resources/js/common/cmmnUtil.js",						// 공통 함수
 				
-				"resources/js/util/main.js",							// main
+				"resources/js/gallery/main/main.js",							// main
 				
-				"resources/js/gallery/sign/signIn.js",							// main
-				"resources/js/gallery/sign/regist.js",							// regist
+//				"resources/js/gallery/sign/signIn.js",							// signIn
+//				"resources/js/gallery/sign/regist.js",							// regist
 	
 			],
 

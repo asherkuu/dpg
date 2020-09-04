@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="regist">
+<mapper namespace="com.dpg.gallery.regist">
 
-	<insert id="registUser" parameterType="map">
-		INSERT INTO DPG_IFO_USR
+	<select id="isExistsUser" parameterType="HashMap" resultType="int">
+		SELECT COUNT(USR_ID) AS EXISTENCE_COUNT
+		  FROM DPG_INF_USR
+		 WHERE USR_ID 		= #{USR_ID}
+		   AND USR_STATUS 	= '0'
+	</select>
+
+	<insert id="registUser" parameterType="HashMap">
+		INSERT INTO DPG_INF_USR
 		(
 			  USR_NUM
 			, USR_ID
@@ -23,7 +30,7 @@
 		)
 		VALUE 
 		(
-		 	  #{USR_NUM}
+		 	  (SELECT MAXNUMBER + 1 FROM (SELECT IFNULL(MAX(USR_NUM), 0) AS MAXNUMBER FROM DPG_INF_USR) AS USR_NUM)
 			, #{USR_ID}
 			, #{USR_PWD}
 			, #{USR_PWD}
@@ -38,6 +45,39 @@
 			, DATE_FORMAT(NOW(),"%Y%m%d")
 			, '0'
 		)
+	</insert>
+
+	<insert id="registUserImage" parameterType="HashMap">
+	INSERT INTO DPG_DB.DPG_IMG_USR
+	(
+		  IMG_NUM
+		, USR_NUM
+		, USR_ID
+		, IMG_NAME
+		, IMG_RNAME
+		, IMG_PATH
+		, IMG_SIZE
+		, IMG_RDATE
+		, IMG_RTIME
+		, IMG_UDATE
+		, IMG_UTIME
+		, IMG_EXTS
+	)
+	VALUES
+	(
+		  (SELECT MAXNUMBER + 1 FROM (SELECT IFNULL(MAX(IMG_NUM), 0) AS MAXNUMBER FROM DPG_IMG_USR) AS USR_NUM)
+		, (SELECT USR_NUM FROM (SELECT USR_NUM FROM DPG_INF_USR WHERE USR_ID = #{USR_ID} AND USR_STATUS = '0') AS USR_NUM)
+		, (SELECT USR_ID  FROM (SELECT USR_ID  FROM DPG_INF_USR WHERE USR_ID = #{USR_ID} AND USR_STATUS = '0') AS USR_ID)
+		, #{IMG_NAME}
+		, #{IMG_RNAME}
+		, #{IMG_PATH}
+		, #{IMG_SIZE}
+		, DATE_FORMAT(NOW(),"%Y%m%d")
+		, DATE_FORMAT(NOW(),"%H%i%S")
+		, DATE_FORMAT(NOW(),"%Y%m%d")
+		, DATE_FORMAT(NOW(),"%H%i%S")
+		, #{IMG_EXTS}
+	)
 	</insert>
 
 </mapper>

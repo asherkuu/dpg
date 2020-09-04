@@ -457,25 +457,12 @@ only screen and (min-width: 576px) and (max-width: 767px),
 }
 
 .main_menu ul li>a:after {
-/* 	position: absolute; */
-/* 	content: ""; */
-/* 	width: 0; */
-/* 	height: 6px; */
-/* 	left: 0; */
-/* 	bottom: 8px; */
-/* 	background: #0ECE91; */
-/* 	z-index: -1; */
-/* 	-webkit-transition: 0.3s; */
-/* 	-moz-transition: 0.3s; */
-/* 	-o-transition: 0.3s; */
-/* 	transition: 0.3s; */
-	
 	position: absolute;
     content: "";
     width: 0;
     height: 2px;
     left: 0;
-    bottom: 5.5px;
+    bottom: -0.5px;
     background: #000000;
     z-index: -1;
     -webkit-transition: 0.3s;
@@ -571,7 +558,7 @@ only screen and (min-width: 576px) and (max-width: 767px),
 
 .offcanvas-menu {
 	position: fixed;
-	width: 270px;
+	width: 205px;
 	height: 100%;
 	left: -300px;
 	top: 0;
@@ -709,25 +696,12 @@ only screen and (min-width: 576px) and (max-width: 767px),
 }
 
 .filter-controls ul li:before {
-/* 	position: absolute; */
-/* 	content: ""; */
-/* 	width: 0; */
-/* 	height: 6px; */
-/* 	left: 0; */
-/* 	bottom: 4px; */
-/* 	background: #0ECE91; */
-/* 	z-index: -1; */
-/* 	-webkit-transition: 0.3s; */
-/* 	-moz-transition: 0.3s; */
-/* 	-o-transition: 0.3s; */
-/* 	transition: 0.3s; */
-	
 	position: absolute;
     content: "";
     width: 0;
     height: 2px;
     left: 0;
-    bottom: 2.6px;
+    bottom: -0.5px;
     background: #000000;
     z-index: -1;
     -webkit-transition: 0.3s;
@@ -2282,11 +2256,16 @@ only screen and (min-width: 576px) and (max-width: 767px),
 	transition: 0.4s;
 }
 
-.contact_form_box input:focus,
+.contact_form_box input[type=text]:focus,
+.contact_form_box input[type=password]:focus,
 .contact_form_box textarea:focus {
 	border-bottom-color: #0ECE91;
 	color: #111111;
 	padding-bottom: 25px;
+}
+
+.contact_form_box input[type=button]:focus {
+	cursor: pointer;
 }
 
 .contact_form_box textarea {

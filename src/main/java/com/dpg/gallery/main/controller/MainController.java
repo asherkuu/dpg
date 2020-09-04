@@ -11,7 +11,7 @@ import com.dpg.gallery.main.service.MainService;
 
 /**
  * @Class Name  : MainContorller.java
- * @Description : MainContorller.Class
+ * @Description : MainController.class
  * @Modification Information
  * @
  * @ Update date    Update Admin  	Update Comment
@@ -42,11 +42,10 @@ public class MainController {
 	 */
 	@RequestMapping(value = "/")
 	public ModelAndView selectMain(ModelAndView mv) throws Exception {
-		String getTime = mainService.getTime();
-		mv.addObject("time", getTime);
-		System.out.println("getTime : " + getTime);
 		mv.setViewName("gallery/main/index.ga");
 		return mv;
 	}
 
+	
+	
 }

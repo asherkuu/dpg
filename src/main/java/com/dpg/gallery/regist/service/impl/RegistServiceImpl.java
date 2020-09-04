@@ -15,8 +15,28 @@ public class RegistServiceImpl implements RegistService {
 
 	@Override
 	public int registUser(Map<String, Object> param) throws Exception {
-		return registDao.registDao(param);
+		int cnt = registDao.registUser(param);
+		if(cnt > 0) {
+			int scnt = registDao.registUserImage(param);
+			if(scnt > 0) {
+				return 1;
+			} else {
+				return 0;
+			}
+		} else {
+			return 0;
+		} 
 	}
 
+	@Override
+	public boolean isExistsUser(Map<String, Object> param) throws Exception {
+		int cnt = registDao.isExistsUser(param);
+
+		if(cnt > 0) {
+			return false;	
+		} else {
+			return true;
+		}
+	}
 
 }

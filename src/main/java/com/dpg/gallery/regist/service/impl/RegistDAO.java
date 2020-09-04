@@ -13,10 +13,18 @@ public class RegistDAO {
 	@Resource(name = "sqlSession")
 	private SqlSessionTemplate sqlSession;
 	
-	String prefix = "regist.";
+	String prefix = "com.dpg.gallery.regist.";
 
-	public int registDao(Map<String, Object> param) {
+	public int registUser(Map<String, Object> param) {
 		return sqlSession.insert(prefix + "registUser", param);
+	}
+
+	public int isExistsUser(Map<String, Object> param) {
+		return sqlSession.selectOne(prefix + "isExistsUser", param);
+	}
+
+	public int registUserImage(Map<String, Object> param) {
+		return sqlSession.insert(prefix + "registUserImage", param);
 	}
 	
 }

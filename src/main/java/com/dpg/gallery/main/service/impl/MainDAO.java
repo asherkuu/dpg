@@ -11,7 +11,7 @@ public class MainDAO {
 	@Resource(name = "sqlSession")
 	private SqlSessionTemplate sqlSession;
 	
-	String prefix = "main.";
+	String prefix = "com.dpg.gallery.main.";
 	
 	public String getTime() throws Exception {
 		return sqlSession.selectOne(prefix + "getTime");

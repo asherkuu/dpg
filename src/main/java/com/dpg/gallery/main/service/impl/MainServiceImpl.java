@@ -10,9 +10,4 @@ public class MainServiceImpl implements MainService {
 
 	@Autowired
 	private MainDAO mainDao;
-
-	@Override
-	public String getTime() throws Exception {
-		return mainDao.getTime();
-	};
 }

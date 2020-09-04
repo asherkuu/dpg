@@ -6,7 +6,7 @@
 			<div class="row">
 				<div class="col-lg-3">
 					<a href="#" class="footer_logo"> 
-						<img src="/resources/img/footer-logo.png" alt="">
+						<img src="/resources/img/footer-dpg-logo.png" alt="">
 					</a>
 				</div>
 				<div class="col-lg-6">
@@ -23,12 +23,10 @@
 				<div class="col-lg-3">
 					<div class="footer_social">
 						<a href="#"><i class="fa fa-facebook"></i></a> 
-						<a href="#"><i class="fa fa-twitter"></i></a> 
 						<a href="#"><i class="fa fa-instagram"></i></a>
 					</div>
 				</div>
 			</div>
 		</div>
 	</footer>
-</body>
 </html>

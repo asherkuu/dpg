@@ -7,10 +7,15 @@
 		<div class="row">
 			<div class="col-lg-10 m-auto">
 				<h2>
-					Hello! Welcome to <br>Dead Poets
-					Gallery
+					Hello 
+					<c:if test="${not empty sessionScope.loginuser}">
+						<c:set var="user" value="${sessionScope.loginuser}"/>
+						${user.USR_ID}
+					</c:if>
+					!
 					<br>
-					${time}
+					Welcome to Dead Poets
+					Gallery
 				</h2>
 			</div>
 		</div>
