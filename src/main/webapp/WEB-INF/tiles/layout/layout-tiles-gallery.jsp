@@ -7,7 +7,7 @@
 
 
 <%
-	// localhost:port/ or ip:port/
+	// ip:port/
 	String ctxPath2 = request.getContextPath();
 %>
 
@@ -27,8 +27,6 @@
 <script src="${ctxPath2}/resources/js/loader/js-loader.js"></script>
 
 <script type="text/javascript">
-alert("ctxPath : "+${ctxPath});
-alert("ctxPath : "+${ctxPath2});
 	console.log('%c DPG', `font-size: 130px; background: url(http://localhost:8080/resources/img/dpg-logo.png) no-repeat;`)
 </script>
 

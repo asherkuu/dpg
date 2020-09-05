@@ -1,11 +1,9 @@
 package com.dpg.gallery.regist.controller;
 
-import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,7 +25,7 @@ import com.dpg.gallery.regist.service.RegistService;
  * @Modification Information
  * @
  * @ Update date    Update Admin  	Update Comment
- * @ -----------   ------------     ----------------------------------
+ * @ -----------   -------------    ----------------------------------
  * @ 2020.08.22 	Asher       	The first write
  *
  * @author Asher
@@ -80,7 +78,10 @@ public class RegistContorller {
 	public String registUser(MultipartHttpServletRequest mrequest, @RequestParam Map<String, Object> param) throws Exception {
 		
 		Map<String, Object> result = new HashMap<String, Object>();
-		 
+		
+		String root = "";
+		String path = "";
+		
 		try {
 			boolean isExist = registService.isExistsUser(param); // 아이디 존재유무
 
@@ -90,24 +91,11 @@ public class RegistContorller {
 				result.put("location", "/signIn/isExists");
 			} else { // 아이디 미존재시
 				
+				// 파일 업로드
 				MultipartFile mpf = mrequest.getFile("img_file");
 				
 				if(!mpf.isEmpty()) {
-					HttpSession session = mrequest.getSession();
-					String root = session.getServletContext().getRealPath("/");
-					String path = root + "resources" + File.separator + "images";
-					String newFileName = "";
-					String realFileName = mpf.getOriginalFilename();
-					byte[] bytes = mpf.getBytes();
-					long filsSize = mpf.getSize();
-					
-					newFileName = fileManager.fileUpload(bytes, realFileName, path);
-					
-					param.put("IMG_NAME", newFileName);
-					param.put("IMG_RNAME", realFileName);
-					param.put("IMG_PATH", path);
-					param.put("IMG_SIZE", filsSize);
-					param.put("IMG_EXTS", realFileName.substring(realFileName.lastIndexOf(".")));
+					param = fileManager.newFileUpload(mpf, param, "p");
 				}
 								
 				param.put("USR_PWD",  SHA256.encrypt(param.get("USR_PWD").toString()));
@@ -117,10 +105,14 @@ public class RegistContorller {
 					result.put("SUCCESS", false);
 					result.put("message", "Fail to Create Account.");
 					result.put("location", "location.reload(true)");
+					result.put("root", root);
+					result.put("path", path);
 				} else { // 등록 성공
 					result.put("SUCCESS", true);
 					result.put("message", "Success.");
 					result.put("location", "/signIn/");
+					result.put("root", root);
+					result.put("path", path);
 				}
 			}			
 		} catch (Exception e) {

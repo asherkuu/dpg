@@ -43,7 +43,7 @@
 			</div>
 			
 			<div class="col-lg-4 photo">
-				<div class="contact_box photo"> 
+				<div class="frame_box photo"> 
 					<div class="div-photo"><h2>Photo</h2></div>
 					<div class="img-area">
 						<img id="img-preivew" class="img-preview" src="">

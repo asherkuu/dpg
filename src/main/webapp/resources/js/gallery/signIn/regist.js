@@ -62,8 +62,7 @@ $(function() {
 						return false;
 					} else {
 						var formData = new FormData($("form[name=regist_form]")[0]);
-//						var fromData = new Formdata($("form[name=regist_form]")[0]);
-						cmmn.util.Request.requestAjaxFileUpload("/signIn/regist/registUser.do", formData/*$('form[name=regist_form]').serialize()*/);
+						cmmn.util.Request.requestAjaxFileUpload("/signIn/regist/registUser.do", formData); // 등록이벤트
 					}
 				});
 			},
@@ -290,11 +289,6 @@ $(function() {
 //////////////
 // 데이터 호출 영역
 //////////////
-			
-			// 등록
-//			registUser : function(param) {
-//				cmmn.util.Request.requestAjax("/signIn/regist/registUser.do", param);
-//			},
 			
 	};
 	

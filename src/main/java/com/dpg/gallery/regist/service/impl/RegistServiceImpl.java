@@ -15,16 +15,16 @@ public class RegistServiceImpl implements RegistService {
 
 	@Override
 	public int registUser(Map<String, Object> param) throws Exception {
-		int cnt = registDao.registUser(param);
-		if(cnt > 0) {
-			int scnt = registDao.registUserImage(param);
-			if(scnt > 0) {
-				return 1;
-			} else {
-				return 0;
-			}
-		} else {
+		int cnt = registDao.registUser(param); // 정보등록
+		int scnt = 0;
+		if(param.get("IMG_NAME") != null) {
+			scnt = registDao.registUserImage(param); // 이미지등록
+		}
+		
+		if(cnt + scnt <= 0) {
 			return 0;
+		} else {
+			return 1;
 		} 
 	}
 

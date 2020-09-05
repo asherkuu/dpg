@@ -106,7 +106,7 @@
     padding: 50px 0px;
 }
 
-.contact_box.photo {
+.frame_box.photo {
 	padding: 0px 50px;	
 	height: 100%;
 	box-shadow: 0 9px 62px rgba(0, 0, 0, 0.1);
@@ -132,7 +132,7 @@
 	right: 0;
 }
 @media(max-width: 1200px) {
-	.contact_box.photo {
+	.frame_box.photo {
 		padding: 0px 20px;
 	}
 	.img-area input {
@@ -154,7 +154,7 @@
 		margin: auto;
 		width: auto;
 	}
-	.contact_box.photo {
+	.frame_box.photo {
 		margin: 20px 0px;
 	}
 	.img-area input {
