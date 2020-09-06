@@ -1,8 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page session="false" %>
 
 <section class="hero">
+
 	<div class="container main_area">
 		<div class="row">
 		
@@ -128,14 +130,6 @@
 			<li class="active" data-filter="*">ALL</li>
 			<li data-filter=".yet">YET</li>
 			<li data-filter=".done">DONE</li>
-
-			<!--  
-			<li data-filter=".photo">PHOTOGRAPHY</li>
-			<li data-filter=".travel">TRAVEL</li>
-			<li data-filter=".natural">NATURE</li>
-			<li data-filter=".fashion">FASHION</li>
-			<li data-filter=".lifestyle">LIFE STYLE</li>
-			-->
 		</ul>
 	</div>
 	<div class="gallery_warp" id="MixItUp1BE6E7">

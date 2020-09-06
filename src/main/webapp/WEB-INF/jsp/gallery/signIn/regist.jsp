@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<script src="/resources/js/gallery/signIn/regist.js"></script>
+<script src="${URL_PATH}/resources/js/gallery/signIn/regist.js"></script>
 
 <section class="contact_section spad">
 	<div class="container">

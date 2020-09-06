@@ -1,6 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import = "java.util.ResourceBundle" %>
+
+<% 
+	ResourceBundle resource = ResourceBundle.getBundle("resource.prop.globals");
+	String FILE_PATH = resource.getString("Globals.Upload");	
+%>
 
 	<c:choose>
 		<c:when test="${not empty sessionScope.loginuser}">

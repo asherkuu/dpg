@@ -101,7 +101,7 @@ public class RegistContorller {
 				param.put("USR_PWD",  SHA256.encrypt(param.get("USR_PWD").toString()));
 				int cnt = registService.registUser(param);
 				
-				if(cnt < 0) { // 등록 실패
+				if(cnt <= 0) { // 등록 실패
 					result.put("SUCCESS", false);
 					result.put("message", "Fail to Create Account.");
 					result.put("location", "location.reload(true)");

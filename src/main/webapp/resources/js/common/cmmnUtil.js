@@ -37,19 +37,15 @@
 					
 					if(result.message != "") {
 						if(result.SUCCESS) {
-							swal(result.message, {icon : "success", button : "YEET !"}).then((willDelete) => {
-								if(willDelete) {
-									if(result.location != "") {
-										javascript:location.href = result.location;
-									}
-								}
+							
+							swal(result.message, {icon : "success", button : "YEET !"}).then(function() {
+								javascript:location.href = result.location;
 							});
 						} else {
-							swal(result.message, {icon : "warning", button : true}).then((willDelete) => {
-								if(willDelete) {
-									if(result.location != "") {
-										javascript:location.href = result.location;
-									}
+							
+							swal(result.message, {icon : "warning", button : true}).then(function() {
+								if(result.location != "") {
+									javascript:location.href = result.location;
 								}
 							});
 						}
@@ -69,7 +65,7 @@
 			return deferred.promise();
 			
 		}, // end of requestAjax
-		
+
 		/**
 		 * Version 		: 1.0
 		 * function		: requestAjaxFileUpload
@@ -98,19 +94,15 @@
 					
 					if(result.message != "") {
 						if(result.SUCCESS) {
-							swal(result.message, {icon : "success", button : "YEET !"}).then((willDelete) => {
-								if(willDelete) {
-									if(result.location != "") {
-										javascript:location.href = result.location;
-									}
-								}
+							
+							swal(result.message, {icon : "success", button : "YEET !"}).then(function() {
+									javascript:location.href = result.location;
 							});
 						} else {
-							swal(result.message, {icon : "warning", button : true}).then((willDelete) => {
-								if(willDelete) {
-									if(result.location != "") {
-										javascript:location.href = result.location;
-									}
+							
+							swal(result.message, {icon : "warning", button : true}).then(function() {
+								if(result.location != "") {
+									javascript:location.href = result.location;
 								}
 							});
 						}
