@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<% String CTX_PATH = request.getContextPath(); %>
+
 <!-- <script src="/resources/js/gallery/profile/profile.js"></script> -->
 
 <%-- <c:if test="${not empty sessionScope.loginuser}"> --%>
@@ -17,7 +19,7 @@
 			<div class="col-lg-9">
 				<article class="blog_post_content">
 					<div class="post_date">26th June, 2019</div>
-					<img alt="" src="/tmp/rscs/img/test.jpg" style="max-width: 850px; max-height: 520px;">
+					<img alt="" src="<%= CTX_PATH%>/tmp/rscs/img/test.jpg" style="max-width: 850px; max-height: 520px;">
 <!-- 					<img src="/resources/img/artist/blog-big.jpg" alt=""> -->
 				</article>
 				

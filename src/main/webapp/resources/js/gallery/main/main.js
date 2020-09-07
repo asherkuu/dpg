@@ -4,22 +4,56 @@
 -------------------
 ======================================*/
 
-'use strict';
 
-$(function() {	
+$(function() {
+	
+	'use strict';
 
+	/*----------
+		헤더 스크롤 이벤트
+	----------*/
+	$(window).on('scroll resize',function(e) {
+		if ($(this).scrollTop() > 83) {
+			$('.header').addClass('sticky');
+			$('body').addClass('pt83');
+		}else{
+			$('.header').removeClass('sticky');
+			$('body').removeClass('pt83');
+		}
+		e.preventDefault();
+	});
+
+	/*----------
+		필터 스크롤 이벤트
+	----------*/
+	$(window).on('scroll resize',function(e) {
+		if($(document).scrollTop() > 800) {
+			$('.filter-controls').addClass('controls_fixed');
+			$('body').addClass('pt200');
+		} else {
+			$('.filter-controls').removeClass('controls_fixed');
+			$('body').removeClass('pt200');
+		}
+		e.preventDefault();
+	});
+	
+	/*----------
+		버튼 클릭이벤트
+	----------*/
+	$('#btnViewMore').on('click', function() {
+		javascript:location.href="/articles/view";
+	});
+	
 	/*---------
 		프리로더
 	----------*/
-	
 	$(".loader").fadeOut();
 	$("#preloder").delay(250).fadeOut("slow");
 	
 	/*---------
 		메인프레임 메뉴 스크롤 이벤트
 	----------*/
-	
-	$('.filter-controls').on('click', function(e) {
+	$('.filter-controls .filter').on('click', function(e) {
 		var screenWidth = window.innerWidth;
 		if(screenWidth > 992) {
 			$('html').animate({scrollTop:770}, 500);
@@ -33,10 +67,9 @@ $(function() {
 	});
 	
 	/*---------
-		메인프레임 메뉴 이벤트
+		필터 컨트롤 이벤트
 	----------*/
-	
-	$('.filter-controls li').on('click', function() {
+	$('.filter-controls li.filter').on('click', function() {
 		$('.filter-controls li').removeClass('active');
 		$(this).addClass('active');
 	});
@@ -49,6 +82,13 @@ $(function() {
 	if($('.blog_row').length > 0 ) {
 		$('.blog_row').masonry();
 	}
+	
+	/*---------
+		Article 클릭시 해당 Detail 페이지 이동
+	----------*/
+	$('.owl-stage.main_frame .owl-item').on('click', function(){
+		javascript:location.href="/articels/list";
+	});
 	
 	/*---------
 		상단 메뉴 active 이벤트
@@ -110,38 +150,6 @@ $(function() {
 		'closedSymbol': '<i class="fa fa-angle-right"></i>'
 	});
 	
-	/*--------
-		상단 우측 좌측 검색 활성화 버튼 이벤트
-	--------*/
-	$('.search-switch').on('click', function (e) {
-		e.preventDefault();
-	    $('.search-model').fadeIn(400);
-	});
-	
-	$('.search-close-switch').on('click', function () {
-	    $('.search-model').fadeOut(400, function () {
-	        $('#search-input').val('');
-	    });
-	});
-	
-	/*----------
-		헤더 스크롤 이벤트
-	----------*/
-	$(window).on('scroll resize',function(e) {
-		if ($(this).scrollTop() > 83) {
-			$('.header').addClass('sticky');
-			$('body').addClass('pt83');
-		}else{
-			$('.header').removeClass('sticky');
-			$('body').removeClass('pt83');
-		}
-		e.preventDefault();
-	});
-
-	$('#btnViewMore').on('click', function() {
-		javascript:location.href="/articles/view";
-	});
-	
 	/*----------
 		사진클릭 이벤트
 	----------*/
@@ -160,7 +168,7 @@ $(function() {
 	});
 	
 	// set
-	$('.filter-controls').on("click", function(){
+	$('.filter-controls .filter').on("click", function(){
 		var selectedFilter = $('.filter-controls .active').text().toLowerCase();
 		
 		if(selectedFilter == "all") {
@@ -229,10 +237,6 @@ $(function() {
 	}).on('changed.owl.carousel', syncPosition2);
 	
 	function syncPosition(el) {
-	    //if you set loop to false, you have to restore this next line
-	    //var current = el.item.index;
-	
-	    //if you disable loop you have to comment this block
 	    var count = el.item.count - 1;
 	    var current = Math.round(el.item.index - (el.item.count / 2) - .5);
 	

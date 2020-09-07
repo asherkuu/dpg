@@ -10,9 +10,9 @@
 
 <%
 	ResourceBundle resource = ResourceBundle.getBundle("resource.prop.globals");
-	String FILE_PATH = resource.getString("Globals.Upload");	
-	// ip:port/
-	String ctxPath2 = request.getContextPath();
+	String UPLOAD_PATH = resource.getString("Globals.Upload");
+	
+	String CTX_PATH = request.getContextPath();
 
 	String URL_PATH = "";
 	if(CmmnUtil.isLinux()) {
@@ -36,8 +36,8 @@
 <title>DPG</title>
 
 <!-- load JS files -->
-<script src="<%=URL_PATH%>/resources/js/loader/js-package.js"></script>
-<script src="<%=URL_PATH%>/resources/js/loader/js-loader.js"></script>
+<script src="<%=CTX_PATH%>/resources/js/loader/js-package.js"></script>
+<script src="<%=CTX_PATH%>/resources/js/loader/js-loader.js"></script>
 
 <script type="text/javascript">
 	var agent = navigator.userAgent.toLowerCase();
@@ -47,8 +47,6 @@
 	} else {
 		console.log('%c DPG', 'font-size: 130px; background: url(<%=URL_PATH%>/resources/img/dpg-logo.png) no-repeat;')	
 	}
-
-	
 </script>
 
 </head>

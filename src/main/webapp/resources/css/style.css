@@ -346,6 +346,10 @@ ol {
 	padding-top: 83px;
 }
 
+.pt200 {
+	padding-top: 200px;
+}
+
 /*-----------
    Header section
  ------------*/
@@ -371,15 +375,18 @@ ol {
 	width: 100%;
 	top: 0;
 	left: 0;
-	top: 0;
 	background: #ffffff;
 	-webkit-transition: all 0.4s ease 0.3s;
 	-moz-transition: all 0.4s ease 0.3s;
 	-o-transition: all 0.4s ease 0.3s;
 	transition: all 0.4s ease 0.3s;
 	-webkit-box-shadow: 0 10px 50px rgba(0, 0, 0, 0.1);
+	/*
 	-moz-box-shadow: 0 10px 50px rgba(0, 0, 0, 0.1);
 	box-shadow: 0 10px 50px rgba(0, 0, 0, 0.1);
+	*/
+	-moz-box-shadow: 0 2px 1px rgba(0, 0, 0, 0.1);
+	box-shadow: 0 2px 1px rgba(0, 0, 0, 0.1);
 }
 
 .site-logo {
@@ -649,7 +656,7 @@ only screen and (min-width: 576px) and (max-width: 767px),
  ------------*/
 
 .hero {
-	padding: 105px 0px 20px 0px;
+	padding: 105px 0px 0px 0px;
 }
 
 .frame_info.new {
@@ -736,7 +743,7 @@ only screen and (min-width: 576px) and (max-width: 767px),
 
 .filter-controls {
 	text-align: center;
-	padding-top: 30px;
+	padding-top: 40px;
 	margin-bottom: 40px;
 }
 
@@ -758,7 +765,7 @@ only screen and (min-width: 576px) and (max-width: 767px),
 	font-family: "Aldrich", sans-serif;
 }
 
-.filter-controls ul li:after {
+.filter-controls ul li.filter:after {
 	position: absolute;
 	content: "•";
 	font-family: "Aldrich", sans-serif;
@@ -782,12 +789,12 @@ only screen and (min-width: 576px) and (max-width: 767px),
     transition: 0.3s;
 }
 
-.filter-controls ul li:hover,
+.filter-controls ul li.filter:hover,
 .filter-controls ul li.active {
 	color: #111111;
 }
 
-.filter-controls ul li:hover:before,
+.filter-controls ul li.filter:hover:before,
 .filter-controls ul li.active:before {
 	width: 100%;
 }
@@ -802,6 +809,20 @@ only screen and (min-width: 576px) and (max-width: 767px),
 
 .filter-controls ul li:last-child:after {
 	display: none;
+}
+
+.filter-search-bar {
+	position: absolute;
+	right: 0px;
+}
+
+.controls_fixed {
+/* 	transition: all 0.4s ease 0.3s; */
+	position: fixed;
+    width: 100%;
+    z-index: 1;
+    top: 55px;
+    background: white;
 }
 
 .gallery_warp {
@@ -1110,7 +1131,7 @@ only screen and (min-width: 576px) and (max-width: 767px) {
 	left: 0;
 	bottom: 20px;
 	padding: 0 30px;
-	z-index: 3;
+/* 	z-index: 3; */
 }
 
 .gellery_text span {
@@ -2367,6 +2388,10 @@ only screen and (min-width: 576px) and (max-width: 767px),
 .album_thumb_slider .owl-item .album_slide_thumb {
 	width: 120px; 
 	height: 70px;
+}
+
+.owl-item:hover {
+	cursor: pointer;
 }
 
 .view_more {
