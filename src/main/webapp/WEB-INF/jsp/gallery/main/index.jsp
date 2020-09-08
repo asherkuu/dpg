@@ -4,6 +4,7 @@
 <%@ page session="false" %>
 
 <% String CTX_PATH = request.getContextPath(); %>
+<script src="<%=CTX_PATH%>/resources/js/gallery/main/main.js"></script>
 
 <section class="hero">
 	<div class="container main_area">
@@ -17,20 +18,17 @@
 						<div class="owl-stage main_frame">
 
 							<div class="owl-item">
-								<div class="album_slide set-bg"
-									data-setbg="<%=CTX_PATH%>/resources/img/1.jpg"
+								<div class="album_slide set-bg" data-setbg="<%=CTX_PATH%>/resources/img/1.jpg"
 									style="background-image: url(&quot;<%=CTX_PATH%>/resources/img/1.jpg&quot;); height: 410px;">
 								</div>
 							</div>
 							<div class="owl-item">
-								<div class="album_slide set-bg"
-									data-setbg="<%=CTX_PATH%>/resources/img/2.jpg"
+								<div class="album_slide set-bg" data-setbg="<%=CTX_PATH%>/resources/img/2.jpg"
 									style="background-image: url(&quot;<%=CTX_PATH%>/resources/img/2.jpg&quot;); height: 410px;">
 								</div>
 							</div>
 							<div class="owl-item">
-								<div class="album_slide set-bg"
-									data-setbg="<%=CTX_PATH%>/resources/img/3.jpg"
+								<div class="album_slide set-bg" data-setbg="<%=CTX_PATH%>/resources/img/3.jpg"
 									style="background-image: url(&quot;<%=CTX_PATH%>/resources/img/3.jpg&quot;); height: 410px;">
 								</div>
 							</div>
@@ -153,205 +151,143 @@
 <!--  
 	Main Articles Area
 -->
-		<div class="mix grid_item grid-1 yet">
-			<a class="gallery_img set-bg yet" href="<%=CTX_PATH%>/resources/img/1.jpg"
+	<c:if test="${LIST != null}">						
+		<c:forEach var="item" items="${LIST}" varStatus="status">
+		    <c:choose>
+		    
+		    	<c:when test="${not empty item.ART_TITLE || item.ART_TITLE ne '' && item.ART_ADT_YN eq '0'}">
+			    	<div class="thumbnail mix grid_item<%--  grid-${status.count} --%> done">
+			    		<img class="gallery_img set-bg" src="<%=CTX_PATH%>${item.FILE_PATH}" 
+				    		data-setbg="<%=CTX_PATH%>${item.FILE_PATH}" 
+				    		style="background-image: url(&quot;<%=CTX_PATH%>${item.FILE_PATH}&quot;);">
+				    		<div class="">
+								<span>${item.USR_ID}</span>
+								<h3>${item.ART_TITLE}</h3>
+							</div>
+						</a>
+					</div>	
+		    	</c:when>
+		    	
+		    	<c:otherwise>
+		    		<div class="thumbnail mix grid_item<%--  grid-${status.count} --%> yet">
+			    		<img class="gallery_img set-bg" src="<%=CTX_PATH%>${item.FILE_PATH}" 
+				    		data-setbg="<%=CTX_PATH%>${item.FILE_PATH}" 
+				    		style="background-image: url(&quot;<%=CTX_PATH%>${item.FILE_PATH}&quot;);">
+				    		<div class="">
+								<span>${item.USR_ID}</span>
+								<h3>Leave A Comment</h3>
+							</div>
+						</a>
+					</div>		
+		    	</c:otherwise>
+		    	
+		    </c:choose>
+		</c:forEach>
+	</c:if>
+
+
+		<div class="thumbnail mix grid_item yet">
+<%-- 			<img class="gallery_img set-bg yet" src="<%=CTX_PATH%>/resources/img/3.jpg" --%>
+<%-- 				data-setbg="<%=CTX_PATH%>/resources/img/3.jpg" --%>
+<%-- 				style="background-image: url(&quot;<%=CTX_PATH%>/resources/img/3.jpg&quot;);"> --%>
+			<img class="gallery_img set-bg" src="<%=CTX_PATH%>/resources/img/3.jpg" data-setbg="<%=CTX_PATH%>/resources/img/3.jpg"
+			style="background-image: url(&quot;<%=CTX_PATH%>/resources/img/3.jpg&quot;);"/>	
+				<div class="">
+					<span>Photography / Flower</span>
+					<h3>Flower In Door</h3>
+				</div>
+<!-- 			</a> -->
+		</div>
+		<div class="thumbnail mix grid_item yet">
+			<img class="gallery_img set-bg" src="<%=CTX_PATH%>/resources/img/1.jpg"
 				data-setbg="<%=CTX_PATH%>/resources/img/1.jpg"
 				style="background-image: url(&quot;<%=CTX_PATH%>/resources/img/1.jpg&quot;);">
-				<div class="gellery_text">
+				<div class="">
 					<span>Photography / Flower</span>
 					<h3>Flower In Door</h3>
 				</div>
-			</a>
+<!-- 			</a> -->
 		</div>
-		<div class="mix grid_item grid-2 yet">
-			<a class="gallery_img set-bg yet" href="<%=CTX_PATH%>/resources/img/3.jpg"
+		<div class="thumbnail mix grid_item yet">
+			<img class="gallery_img set-bg" src="<%=CTX_PATH%>/resources/img/3.jpg"
 				data-setbg="<%=CTX_PATH%>/resources/img/3.jpg"
 				style="background-image: url(&quot;<%=CTX_PATH%>/resources/img/3.jpg&quot;);">
-				<div class="gellery_text">
+				<div class="">
 					<span>Photography / Flower</span>
 					<h3>Flower In Door</h3>
 				</div>
-			</a>
 		</div>
-		<div class="mix grid_item grid-3 done">
-			<a class="gallery_img set-bg done" href="<%=CTX_PATH%>/resources/img/2.jpg"
+		<div class="thumbnail mix grid_item done">
+			<img class="gallery_img set-bg" src="<%=CTX_PATH%>/resources/img/2.jpg"
 				data-setbg="<%=CTX_PATH%>/resources/img/2.jpg"
 				style="background-image: url(&quot;<%=CTX_PATH%>/resources/img/2.jpg&quot;);">
-				<div class="gellery_text">
+				<div class="">
 					<span>Photography / Flower</span>
 					<h3>Flower In Door</h3>
 				</div>
-			</a>
 		</div>
-		<div class="mix grid_item grid-4 yet">
-			<a class="gallery_img set-bg yet" href="<%=CTX_PATH%>/resources/img/1.jpg"
+		<div class="thumbnail mix grid_item yet">
+			<img class="gallery_img set-bg" src="<%=CTX_PATH%>/resources/img/1.jpg"
 				data-setbg="<%=CTX_PATH%>/resources/img/1.jpg"
 				style="background-image: url(&quot;<%=CTX_PATH%>/resources/img/1.jpg&quot;);">
-				<div class="gellery_text">
+				<div class="">
 					<span>Photography / Flower</span>
 					<h3>Flower In Door</h3>
 				</div>
-			</a>
 		</div>
-		<div class="mix grid_item grid-5 yet">
-			<a class="gallery_img set-bg yet" href="<%=CTX_PATH%>/resources/img/3.jpg"
+		<div class="thumbnail mix grid_item yet">
+			<img class="gallery_img set-bg" src="<%=CTX_PATH%>/resources/img/3.jpg"
 				data-setbg="<%=CTX_PATH%>/resources/img/3.jpg"
 				style="background-image: url(&quot;<%=CTX_PATH%>/resources/img/3.jpg&quot;);">
-				<div class="gellery_text">
+				<div class="">
 					<span>Photography / Flower</span>
 					<h3>Flower In Door</h3>
 				</div>
-			</a>
 		</div>
-		<div class="mix grid_item grid-6 yet">
-			<a class="gallery_img set-bg yet" href="<%=CTX_PATH%>/resources/img/1.jpg"
+		<div class="thumbnail mix grid_item yet">
+			<img class="gallery_img set-bg" src="<%=CTX_PATH%>/resources/img/1.jpg"
 				data-setbg="<%=CTX_PATH%>/resources/img/1.jpg"
 				style="background-image: url(&quot;<%=CTX_PATH%>/resources/img/1.jpg&quot;);">
-				<div class="gellery_text">
+				<div class="">
 					<span>Photography / Flower</span>
 					<h3>Flower In Door</h3>
 				</div>
-			</a>
 		</div>
-		<div class="mix grid_item grid-7 yet">
-			<a class="gallery_img set-bg yet" href="<%=CTX_PATH%>/resources/img/3.jpg"
+		<div class="thumbnail mix grid_item yet">
+			<img class="gallery_img set-bg" src="<%=CTX_PATH%>/resources/img/3.jpg"
 				data-setbg="<%=CTX_PATH%>/resources/img/3.jpg"
 				style="background-image: url(&quot;<%=CTX_PATH%>/resources/img/3.jpg&quot;);">
-				<div class="gellery_text">
+				<div class="">
 					<span>Photography / Flower</span>
 					<h3>Flower In Door</h3>
 				</div>
-			</a>
 		</div>
-		<div class="mix grid_item grid-8 done">
-			<a class="gallery_img set-bg done" href="<%=CTX_PATH%>/resources/img/2.jpg"
+		<div class="thumbnail mix grid_item done">
+			<img class="gallery_img set-bg" src="<%=CTX_PATH%>/resources/img/2.jpg"
 				data-setbg="<%=CTX_PATH%>/resources/img/2.jpg"
 				style="background-image: url(&quot;<%=CTX_PATH%>/resources/img/2.jpg&quot;);">
-				<div class="gellery_text">
+				<div class="">
 					<span>Photography / Flower</span>
 					<h3>Flower In Door</h3>
 				</div>
-			</a>
 		</div>
-		<div class="mix grid_item grid-9 yet">
-			<a class="gallery_img set-bg yet" href="<%=CTX_PATH%>/resources/img/1.jpg"
+		<div class="thumbnail mix grid_item yet">
+			<img class="gallery_img set-bg" src="<%=CTX_PATH%>/resources/img/1.jpg"
 				data-setbg="<%=CTX_PATH%>/resources/img/1.jpg"
 				style="background-image: url(&quot;<%=CTX_PATH%>/resources/img/1.jpg&quot;);">
-				<div class="gellery_text">
+				<div class="">
 					<span>Photography / Flower</span>
 					<h3>Flower In Door</h3>
 				</div>
-			</a>
 		</div>
-		<div class="mix grid_item grid-10 yet">
-			<a class="gallery_img set-bg yet" href="<%=CTX_PATH%>/resources/img/3.jpg"
+		<div class="thumbnail mix grid_item done">
+			<img class="gallery_img set-bg" src="<%=CTX_PATH%>/resources/img/3.jpg"
 				data-setbg="<%=CTX_PATH%>/resources/img/3.jpg"
 				style="background-image: url(&quot;<%=CTX_PATH%>/resources/img/3.jpg&quot;);">
-				<div class="gellery_text">
+				<div class="">
 					<span>Photography / Flower</span>
 					<h3>Flower In Door</h3>
 				</div>
-			</a>
-		</div>
-		<div class="mix grid_item grid-11 yet">
-			<a class="gallery_img set-bg yet" href="<%=CTX_PATH%>/resources/img/1.jpg"
-				data-setbg="<%=CTX_PATH%>/resources/img/1.jpg"
-				style="background-image: url(&quot;<%=CTX_PATH%>/resources/img/1.jpg&quot;);">
-				<div class="gellery_text">
-					<span>Photography / Flower</span>
-					<h3>Flower In Door</h3>
-				</div>
-			</a>
-		</div>
-		<div class="mix grid_item grid-12 yet">
-			<a class="gallery_img set-bg yet" href="<%=CTX_PATH%>/resources/img/3.jpg"
-				data-setbg="<%=CTX_PATH%>/resources/img/3.jpg"
-				style="background-image: url(&quot;<%=CTX_PATH%>/resources/img/3.jpg&quot;);">
-				<div class="gellery_text">
-					<span>Photography / Flower</span>
-					<h3>Flower In Door</h3>
-				</div>
-			</a>
-		</div>
-		<div class="mix grid_item grid-13 done">
-			<a class="gallery_img set-bg done" href="<%=CTX_PATH%>/resources/img/2.jpg"
-				data-setbg="<%=CTX_PATH%>/resources/img/2.jpg"
-				style="background-image: url(&quot;<%=CTX_PATH%>/resources/img/2.jpg&quot;);">
-				<div class="gellery_text">
-					<span>Photography / Flower</span>
-					<h3>Flower In Door</h3>
-				</div>
-			</a>
-		</div>
-		<div class="mix grid_item grid-14 yet">
-			<a class="gallery_img set-bg yet" href="<%=CTX_PATH%>/resources/img/1.jpg"
-				data-setbg="<%=CTX_PATH%>/resources/img/1.jpg"
-				style="background-image: url(&quot;<%=CTX_PATH%>/resources/img/1.jpg&quot;);">
-				<div class="gellery_text">
-					<span>Photography / Flower</span>
-					<h3>Flower In Door</h3>
-				</div>
-			</a>
-		</div>
-		<div class="mix grid_item grid-15 yet">
-			<a class="gallery_img set-bg yet" href="<%=CTX_PATH%>/resources/img/3.jpg"
-				data-setbg="<%=CTX_PATH%>/resources/img/3.jpg"
-				style="background-image: url(&quot;<%=CTX_PATH%>/resources/img/3.jpg&quot;);">
-				<div class="gellery_text">
-					<span>Photography / Flower</span>
-					<h3>Flower In Door</h3>
-				</div>
-			</a>
-		</div>
-		<div class="mix grid_item grid-16 yet">
-			<a class="gallery_img set-bg yet" href="<%=CTX_PATH%>/resources/img/1.jpg"
-				data-setbg="<%=CTX_PATH%>/resources/img/1.jpg"
-				style="background-image: url(&quot;<%=CTX_PATH%>/resources/img/1.jpg&quot;);">
-				<div class="gellery_text">
-					<span>Photography / Flower</span>
-					<h3>Flower In Door</h3>
-				</div>
-			</a>
-		</div>
-		<div class="mix grid_item grid-17 yet">
-			<a class="gallery_img set-bg yet" href="<%=CTX_PATH%>/resources/img/3.jpg"
-				data-setbg="<%=CTX_PATH%>/resources/img/3.jpg"
-				style="background-image: url(&quot;<%=CTX_PATH%>/resources/img/3.jpg&quot;);">
-				<div class="gellery_text">
-					<span>Photography / Flower</span>
-					<h3>Flower In Door</h3>
-				</div>
-			</a>
-		</div>
-		<div class="mix grid_item grid-18 done">
-			<a class="gallery_img set-bg done" href="<%=CTX_PATH%>/resources/img/2.jpg"
-				data-setbg="<%=CTX_PATH%>/resources/img/2.jpg"
-				style="background-image: url(&quot;<%=CTX_PATH%>/resources/img/2.jpg&quot;);">
-				<div class="gellery_text">
-					<span>Photography / Flower</span>
-					<h3>Flower In Door</h3>
-				</div>
-			</a>
-		</div>
-		<div class="mix grid_item grid-19 yet">
-			<a class="gallery_img set-bg yet" href="<%=CTX_PATH%>/resources/img/1.jpg"
-				data-setbg="<%=CTX_PATH%>/resources/img/1.jpg"
-				style="background-image: url(&quot;<%=CTX_PATH%>/resources/img/1.jpg&quot;);">
-				<div class="gellery_text">
-					<span>Photography / Flower</span>
-					<h3>Flower In Door</h3>
-				</div>
-			</a>
-		</div>
-		<div class="mix grid_item grid-20 yet">
-			<a class="gallery_img set-bg yet" href="<%=CTX_PATH%>/resources/img/3.jpg"
-				data-setbg="<%=CTX_PATH%>/resources/img/3.jpg"
-				style="background-image: url(&quot;<%=CTX_PATH%>/resources/img/3.jpg&quot;);">
-				<div class="gellery_text">
-					<span>Photography / Flower</span>
-					<h3>Flower In Door</h3>
-				</div>
-			</a>
 		</div>
 <!--  
 	End Of Main Articles Area

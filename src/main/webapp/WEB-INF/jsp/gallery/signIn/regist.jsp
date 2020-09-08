@@ -2,11 +2,13 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<script src="${URL_PATH}/resources/js/gallery/signIn/regist.js"></script>
+
+<% String CTX_PATH = request.getContextPath(); %>
+<script src="<%=CTX_PATH%>/resources/js/gallery/signIn/regist.js"></script>
 
 <section class="contact_section spad">
 	<div class="container">
-		<form name="regist_form" class="regist_form" enctype="multipart/form-data">
+		<form name="usr_regist_form" class="usr_regist_form" enctype="multipart/form-data">
 		<div class="row">
 
 			<div class="col-lg-8">

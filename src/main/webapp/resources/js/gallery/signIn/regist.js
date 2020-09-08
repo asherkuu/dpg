@@ -61,7 +61,7 @@ $(function() {
 					if(! _self.isValid()) {
 						return false;
 					} else {
-						var formData = new FormData($("form[name=regist_form]")[0]);
+						var formData = new FormData($("form[name=usr_regist_form]")[0]);
 						cmmn.util.Request.requestAjaxFileUpload("/signIn/regist/registUser.do", formData); // 등록이벤트
 					}
 				});

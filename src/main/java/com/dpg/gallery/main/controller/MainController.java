@@ -1,5 +1,10 @@
 package com.dpg.gallery.main.controller;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
@@ -35,17 +40,27 @@ public class MainController {
 
 	/**
 	 * 메인화면 조회
-	 * @param searchVO - 조회할 정보가 담긴 SampleDefaultVO
+	 * @param 
 	 * @param model
-	 * @return "egovSampleList"
+	 * @return "gallery/main/index.ga"
 	 * @exception Exception
 	 */
 	@RequestMapping(value = "/")
-	public ModelAndView selectMain(ModelAndView mv) throws Exception {
-		mv.setViewName("gallery/main/index.ga");
+	public ModelAndView loadMain(ModelAndView mv) throws Exception {
+		
+		List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+		
+		try {
+			list = mainService.getArticles();
+			
+			mv.addObject("LIST", list);
+			mv.setViewName("gallery/main/index.ga");
+			
+		} catch (Exception e) {
+			e.getStackTrace();
+		}
+		
 		return mv;
 	}
-
-	
 	
 }

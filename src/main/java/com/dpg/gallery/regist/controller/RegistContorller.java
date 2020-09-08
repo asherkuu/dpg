@@ -4,8 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.dpg.cmmn.CmmnUtil;
 import com.dpg.cmmn.FileManager;
 import com.dpg.cmmn.ObjectMapperSupport;
 import com.dpg.cmmn.SHA256;
@@ -39,9 +41,6 @@ public class RegistContorller {
 	@Resource(name = "registService")
 	protected RegistService registService;
 	
-	@Autowired
-	private FileManager fileManager;
-	
 	/**
 	 * @comment : 회원가입 화면 조회
 	 * @name	: loadRegist()
@@ -50,8 +49,15 @@ public class RegistContorller {
 	 * @exception Exception
 	 */
 	@RequestMapping(value = "/regist")
-	public String loadRegist() throws Exception {
-		return "gallery/signIn/regist.ga";
+	public ModelAndView loadRegist(HttpServletRequest request, ModelAndView mv) throws Exception {
+		
+		if(CmmnUtil.isLogin(request)) {
+			mv.setViewName("gallery/signIn/regist.ga");
+		} else {
+			mv.setViewName("redirect:/preview/");
+		}
+		
+		return mv;
 	} 
 	
 	/**
@@ -68,7 +74,7 @@ public class RegistContorller {
 
 	/**
 	 * @comment : 회원가입
-	 * @name    : loadRegist()
+	 * @name    : registUser()
 	 * @param   : Parameter Map - 유저정보
 	 * @return  : result (Object To Json)
 	 * @exception Exception
@@ -78,10 +84,6 @@ public class RegistContorller {
 	public String registUser(MultipartHttpServletRequest mrequest, @RequestParam Map<String, Object> param) throws Exception {
 		
 		Map<String, Object> result = new HashMap<String, Object>();
-		
-		String root = "";
-		String path = "";
-		
 		try {
 			boolean isExist = registService.isExistsUser(param); // 아이디 존재유무
 
@@ -95,7 +97,7 @@ public class RegistContorller {
 				MultipartFile mpf = mrequest.getFile("img_file");
 				
 				if(!mpf.isEmpty()) {
-					param = fileManager.newFileUpload(mpf, param, "p");
+					param = FileManager.newFileUpload(mpf, param, "p");
 				}
 								
 				param.put("USR_PWD",  SHA256.encrypt(param.get("USR_PWD").toString()));
@@ -105,14 +107,10 @@ public class RegistContorller {
 					result.put("SUCCESS", false);
 					result.put("message", "Fail to Create Account.");
 					result.put("location", "location.reload(true)");
-					result.put("root", root);
-					result.put("path", path);
 				} else { // 등록 성공
 					result.put("SUCCESS", true);
 					result.put("message", "Success.");
 					result.put("location", "/signIn/");
-					result.put("root", root);
-					result.put("path", path);
 				}
 			}			
 		} catch (Exception e) {

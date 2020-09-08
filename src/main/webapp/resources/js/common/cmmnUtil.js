@@ -1,17 +1,22 @@
 //
 // Version 1.0
-// 18 May 2020
+// 18 June 2020
 // 
 // Auther : Asher Kim
 //
 //
+
+	// 글로벌 파라미터
+	var param = {
+		
+	};	
 
 (function() {
 	
 	"use strict";	
 
 	var _util = {
-			
+		
 		/**
 		 * Version 		: 1.0
 		 * function		: requestAjax
@@ -125,20 +130,115 @@
 		
 		/**
 		 * Version : 1.0
-		 * function: initRegExpression
-		 * Description : 정규표현식 함수
-		 * Usage   : cmmn.util.Request.initRegExpression(gParam);
+		 * function: initCarousel
+		 * Description : 케러셀
+		 * Usage   : cmmn.util.Request.initCarousel(main_target, sub_target);
 		 * Author  : Asher Kim
-		 * Comment : 폼태그내에서 입력된 공통된값을 gParam 으로 넘겨받아서
-		 * 				   각 input 태그에 입력된 값들이 정규표현식(Regular Expression) 에 적합한지
-		 * 				   테스트를 한후 그에 맞게 에러메시지를 출력한다.
-		 * 				   Usage 에서 사용할때 gParam 에 form.serialize(); 한 데이터를 gParam에 담아서 넘겨주고
-		 * 				   input 태그의 id 값은 아래 함수에 정의되어져있는 id 값을 사용해야 공통으로 사용할 수 있다.
+		 * Comment : 케러셀 기능
 		 */
-		initRegExpression : function() {
+		initCarousel : function(sync1, sync2) {
+			var _self = this;
 			
+			param.sync1 = sync1;
+			param.sync2 = sync2;
+			
+			var syncedSecondary = true;
+			
+			sync1.owlCarousel({
+			    items: 1,
+			    lazyLoad : true,
+			    slideSpeed: 2000,
+			    nav: true,
+			    dots: false,
+			    loop: true,
+				responsiveRefreshRate: 200,
+				navText:['<i class="fa fa-angle-left"></i>','<i class="fa fa-angle-right"></i>'],
+				autoplay: true,
+			}).on('changed.owl.carousel', _self.syncPosition);
+			
+			sync2.on('initialized.owl.carousel', function(el) {
+			    sync2.find(".owl-item").eq(0).addClass("current");
+			}).owlCarousel({
+				dots: false,
+				lazyLoad : true,
+				nav: false,
+				smartSpeed: 200,
+				slideSpeed: 500,
+				margin: 20,
+				responsiveRefreshRate: 100,
+				items: 8,
+				slideBy: 8,
+				autoWidth:true,
+				autoHeight:true,
+				responsive : {
+					0 : {
+						items: 2,
+						slideBy: 2,
+					},
+					480 : {
+						items: 4,
+						slideBy: 4,
+					},
+					768 : {
+						items: 6,
+						slideBy: 6,
+					},
+					992 : {
+						items: 8,
+						slideBy: 8,
+					}
+				}
+			}).on('changed.owl.carousel', _self.syncPosition2);
+			
+			sync2.on("click", ".owl-item", function(e) {
+			    e.preventDefault();
+			    var number = $(this).index();
+			    sync1.data('owl.carousel').to(number, 300, true);
+			});
+			
+		},
 		
-		}, 
+		syncPosition : function(el) {
+		    var sync2 = param.sync2;
+		    
+		    var count = el.item.count - 1;
+		    var current = Math.round(el.item.index - (el.item.count / 2) - .5);
+		
+		    if (current < 0) {
+		        current = count;
+		    }
+		    if (current > count) {
+		        current = 0;
+		    }
+		    //end block
+		    
+		    sync2
+		        .find(".owl-item")
+		        .removeClass("current")
+		        .eq(current)
+		        .addClass("current");
+		    var onscreen = sync2.find('.owl-item.active').length - 1;
+		    var start = sync2.find('.owl-item.active').first().index();
+		    var end = sync2.find('.owl-item.active').last().index();
+		
+		    if (current > end) {
+		        sync2.data('owl.carousel').to(current, 100, true);
+		    }
+		    if (current < start) {
+		        sync2.data('owl.carousel').to(current - onscreen, 100, true);
+		    }
+		},
+
+		syncPosition2 : function(el) {
+			var sync1 = param.sync2;
+			var syncedSecondary = true;
+			
+		    if (syncedSecondary) {
+		        var number = el.item.index;
+		        sync1.data('owl.carousel').to(number, 100, true);
+		    }
+		} // end of initCarousel()
+		
 		
 	} // end of _util
 

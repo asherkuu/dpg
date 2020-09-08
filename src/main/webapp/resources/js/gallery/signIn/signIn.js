@@ -105,20 +105,6 @@ $(function() {
 // 데이터 호출 영역
 //////////////
 			
-			login : function(param) {
-				cmmn.util.Request.requestAjax("/signIn/login.do", param).done(function(result){					
-					if(result.SUCCESS) {
-						javascript:location.href="/";
-					} else {
-//						if() {
-//							존재하지 않는 아이디입니다.
-//							비밀번호가 일치하지 않습니다.
-//						}
-						return false;
-					}
-				});
-			},
-			
 	};
 	
 	_class.open();

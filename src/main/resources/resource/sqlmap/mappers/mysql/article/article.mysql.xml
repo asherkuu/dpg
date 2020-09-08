@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dpg.gallery.article">
+
+	<select id="getParOrderNum" resultType="int">
+		SELECT IFNULL(MAX(ART_PORD_NUM), 1) + 1 AS PORDER_NUM
+		  FROM DPG_INF_ART
+		 WHERE ART_ORD_NUM = '0'
+	</select>
+
+	<insert id="registArticles" parameterType="java.util.List">
+		INSERT INTO DPG_INF_ART
+		(
+			  ART_NUM
+			, ART_CODE
+			, USR_NUM
+			, USR_ID
+			, ART_PORD_NUM
+			, ART_ORD_NUM
+			, ART_NAME
+			, ART_RNAME
+			, ART_PATH
+			, ART_SIZE
+			, ART_EXTS
+			, ART_RDATE
+			, ART_RTIME
+			, ART_UDATE
+			, ART_UTIME
+			, ART_TITLE
+			, ART_ADT_YN
+		)
+		VALUES
+		<foreach collection="list" item="item" separator="," index="index">
+		(
+		 	  (SELECT MAXNUMBER + 1 FROM (SELECT IFNULL(MAX(ART_NUM), 0) AS MAXNUMBER FROM DPG_INF_ART) AS ART_NUM)
+			, #{item.ART_CODE}
+			, #{item.USR_NUM}
+			, #{item.USR_ID}
+			, #{item.ART_PORD_NUM}
+			, #{item.ART_ORD_NUM}
+			, #{item.ART_NAME}
+			, #{item.ART_RNAME}
+			, #{item.ART_PATH}
+			, #{item.ART_SIZE}
+			, #{item.ART_EXTS}
+			, DATE_FORMAT(NOW(),"%Y%m%d")
+			, DATE_FORMAT(NOW(),"%H%i%S")
+			, DATE_FORMAT(NOW(),"%Y%m%d")
+			, DATE_FORMAT(NOW(),"%H%i%S")
+			, ''
+			, '1'
+		)	
+		</foreach>
+	</insert>
+
+</mapper>

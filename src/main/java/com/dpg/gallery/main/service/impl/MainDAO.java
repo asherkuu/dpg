@@ -1,5 +1,8 @@
 package com.dpg.gallery.main.service.impl;
 
+import java.util.List;
+import java.util.Map;
+
 import javax.annotation.Resource;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -12,9 +15,9 @@ public class MainDAO {
 	private SqlSessionTemplate sqlSession;
 	
 	String prefix = "com.dpg.gallery.main.";
-	
-	public String getTime() throws Exception {
-		return sqlSession.selectOne(prefix + "getTime");
-	};
-	
+
+	public List<Map<String, Object>> getArticles() {
+		return sqlSession.selectList(prefix + "getArticles");
+	}
+
 }

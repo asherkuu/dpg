@@ -12,7 +12,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.dpg.cmmn.CmmnUtil;
 import com.dpg.cmmn.ObjectMapperSupport;
 import com.dpg.cmmn.SHA256;
 import com.dpg.gallery.signIn.service.SignInService;
@@ -46,8 +48,15 @@ public class SignInContorller {
 	 * @exception Exception
 	 */
 	@RequestMapping(value = "/")
-	public String loadSignIn() throws Exception {
-		return "gallery/signIn/signIn.ga";
+	public ModelAndView loadSignIn(HttpServletRequest request, ModelAndView mv) throws Exception {
+		
+		if(CmmnUtil.isLogin(request)) {
+			mv.setViewName("gallery/signIn/signIn.ga");
+		} else {
+			mv.setViewName("redirect:/preview/");
+		}
+		
+		return mv;
 	}
 	
 	/**
@@ -58,8 +67,15 @@ public class SignInContorller {
 	 * @exception Exception
 	 */
 	@RequestMapping(value = "/findInfo")
-	public String loadFindInfo() throws Exception {
-		return "gallery/signIn/findInfo.ga";
+	public ModelAndView loadFindInfo(HttpServletRequest request, ModelAndView mv) throws Exception {
+		
+		if(CmmnUtil.isLogin(request)) {
+			mv.setViewName("gallery/signIn/findInfo.ga");
+		} else {
+			mv.setViewName("redirect:/preview/");
+		}
+		
+		return mv;
 	}
 
 	/**
@@ -98,7 +114,7 @@ public class SignInContorller {
 					result.put("message", "Password is incorrect.");
 					result.put("location", "");
 				} else {
-					session.setAttribute("loginuser", user);
+					session.setAttribute("loginUser", user);
 					
 					result.put("SUCCESS", true);
 					result.put("message", "");

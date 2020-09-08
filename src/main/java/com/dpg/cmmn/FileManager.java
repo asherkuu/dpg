@@ -2,24 +2,26 @@ package com.dpg.cmmn;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
- @@Class Name  : RegistContorller.java
- @@Description : RegistContorller.class
- @@Modification Information
- @@
- @@ Update date    	Update Admin  	Update Comment
- @@ -----------    -------------    ----------------------------------
- @@ 2020.09.03 		Asher       	The first write
- *
- @@author Asher
- @@since 2020.09.03
- @@version 1.0
+ * @Class Name  : RegistContorller.java
+ * @Description : RegistContorller.class
+ * @Modification Information
+ * @
+ * @ Update date    	Update Admin  	Update Comment
+ * @ -----------    -------------    ----------------------------------
+ * @ 2020.09.03 		Asher       	The first write
+ * 
+ * @author Asher
+ * @since 2020.09.03
+ * @version 1.0
  */
 @Component
 public class FileManager {
@@ -67,20 +69,20 @@ public class FileManager {
 	
 	/**
 		@Version : 1.1
-		@Usage   : fileManage.newFileUpload(MultipartFile, String)
+		@Usage   : fileManage.newFileUpload(MultipartFile, Map<String, Object>, String)
 		@Author  : Asher Kim
 		@reutrn  : Map<String, Obejct> fileInfo
 		@Comment : 단일 파일 업로드 및 업로드된 파일 정보 반환
 	 */
-	public Map<String, Object> newFileUpload(MultipartFile mf, Map<String, Object> param, String regType) throws Exception {
+	public static Map<String, Object> newFileUpload(MultipartFile file, Map<String, Object> param, String regType) throws Exception {
 		
-		if(!mf.isEmpty()) {
+		if(!file.isEmpty()) {
 			
 			String path 		= SAVE_PATH;
 			String newFileName 	= "";
-			String realFileName = mf.getOriginalFilename();
-			byte[] bytes 		= mf.getBytes();
-			long   filsSize 	= mf.getSize();
+			String realFileName = file.getOriginalFilename();
+			byte[] bytes 		= file.getBytes();
+			long   filsSize 	= file.getSize();
 			
 			if(bytes == null) return null; 
 			if(realFileName.equals("")) return null;
@@ -107,6 +109,59 @@ public class FileManager {
 		
 		return param;
 	}
-
+	
+	/**
+		@Version : 1.0
+		@Usage   : fileManage.multifleFileUpload(List<MultipartFile>, Map<String, Object>, String)
+		@Author  : Asher Kim
+		@reutrn  : List<Map<String, Object>> fileInfo
+		@Comment : 단일 파일 업로드 및 업로드된 파일 정보 반환
+	 */
+	public static List<Map<String, Object>> multifleFileUpload(List<MultipartFile> mtpFile, Map<String, Object> param, String regType) throws Exception {
+		
+		Map<String, Object> paraMap = new HashMap<String, Object>();
+		List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+		
+		if(!mtpFile.isEmpty()) {
+			
+			for(MultipartFile mf : mtpFile) {
+				
+				paraMap = new HashMap<String, Object>();
+				
+				String path 		= SAVE_PATH;
+				String newFileName 	= "";
+				String realFileName = mf.getOriginalFilename();
+				byte[] bytes 		= mf.getBytes();
+				long   filsSize 	= mf.getSize();
+				
+				if(bytes == null) return null; 
+				if(realFileName.equals("")) return null;
+				String fileExt = realFileName.substring(realFileName.lastIndexOf("."));
+				if(fileExt == null || fileExt.equals("")) return null;
+				
+				newFileName = regType.toUpperCase() + SHA256.encrypt(realFileName) + System.nanoTime() + fileExt;
+				
+				File dir = new File(path);
+				if(!dir.exists()) dir.mkdirs();
+				
+				String pathname = path + File.separator + newFileName;
+				
+				FileOutputStream fos = new FileOutputStream(pathname);
+				fos.write(bytes);
+				fos.close();
+							
+				paraMap.put("ART_NAME" , realFileName);
+				paraMap.put("ART_RNAME", newFileName);
+				paraMap.put("ART_PATH" , path);
+				paraMap.put("ART_SIZE" , filsSize);
+				paraMap.put("ART_EXTS" , fileExt);
+				
+				list.add(paraMap);
+			}
+		}
+		
+		return list;
+	}
+	
 }
 

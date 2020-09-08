@@ -41,8 +41,7 @@ var AppLibFiles = {
 				// 공통 - common
 				"resources/js/common/app.js",							// 앱 - 글로벌 객체 생성
 				"resources/js/common/cmmnUtil.js",						// 공통 함수
-				
-				"resources/js/gallery/main/main.js",							// main
+				"resources/js/common/init.js",							// 초기세팅
 				
 //				"resources/js/gallery/sign/signIn.js",							// signIn
 //				"resources/js/gallery/sign/regist.js",							// regist
@@ -61,6 +60,7 @@ var AppLibFiles = {
 				"resources/css/magnific-popup.css",						// magnific-popup
 				"resources/css/owl.carousel.min.css",					// owl.carousel.min
 				"resources/css/slicknav.min.css",						// slicknav
+				"resources/css/aos.css",								// aos
 				"resources/css/style.css",								// style
 				
 			],

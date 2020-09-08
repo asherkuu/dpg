@@ -11,7 +11,7 @@
 %>
 
 <c:choose>
-	<c:when test="${not empty sessionScope.loginuser}">
+	<c:when test="${not empty sessionScope.loginUser}">
 		<div class="offcanvas-menu-overlay"></div>
 		<div class="offcanvas-menu">
 			<a href="<%=CTX_PATH%>/preview/" class="site-logo"> 
@@ -30,10 +30,10 @@
 						<ul>	
 							<li><a href="<%=CTX_PATH%>/preview/" id="preview">HOME</a></li>
 							<li><a href="<%=CTX_PATH%>/artist/" id="artist">ARTIST</a></li>
-							<li><a href="<%=CTX_PATH%>/create/" id="create">CREATE</a>
+							<li><a href="<%=CTX_PATH%>/article/" id="article">ARTICLE</a>
 								<ul class="sub_menu">
-									<li><a href="<%=CTX_PATH%>/create/">Create</a></li>
-									<li><a href="<%=CTX_PATH%>/create/articles">List</a></li>
+									<li><a href="<%=CTX_PATH%>/article/regist">Regist</a></li>
+									<li><a href="<%=CTX_PATH%>/article/">List</a></li>
 								</ul>
 							</li>
 							<li><a href="<%=CTX_PATH%>/profile/" id="profile">PROFILE</a>
