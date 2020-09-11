@@ -22,6 +22,15 @@
 		
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<org.apache.tiles-version>3.0.8</org.apache.tiles-version>
+		
+		<!-- 
+			========================================================================================
+			Linux Ubuntu Dev 				: 8.0.19
+			Window Dev & Linux Server 	: 5.1.39
+			======================================================================================== 
+		-->
+		<mybatis.mysql.version>8.0.19</mybatis.mysql.version>
+		
 	</properties>
 
 	<!-- Existing Dependencies -->
@@ -126,7 +135,7 @@
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>5.1.39</version>
+			<version>${mybatis.mysql.version}</version>
 		</dependency>
 	       
 	       <!-- mybatis -->

@@ -1,0 +1,10 @@
+Required Server Build Setting
+
+
+1. Have to change from 
+	<mybatis.mysql.version>8.0.19<mybatis.mysql.version> 
+	to
+	<mybatis.mysql.version>5.1.39<mybatis.mysql.version>
+	in pom.xml > properties.
+
+2. Have to change global.properties Dev to Linux Server. 
