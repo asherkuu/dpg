@@ -1,6 +1,11 @@
 package com.dpg.cmmn;
 
+import java.util.Base64;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
+import java.util.Base64.Decoder;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -116,6 +121,32 @@ public class CmmnUtil {
 		CURRENT_URL = CURRENT_URL.substring(index + 1);
 		
 		return CURRENT_URL;
+	}
+	
+	/**
+	 * Version : 1.0
+	 * Usage   : CmmnUtil.decodeBase64(Map<String, Object>);
+	 * Author  : Asher Kim
+	 * Comment : Base64 디코더
+	 */
+	@SuppressWarnings("rawtypes")
+	public static Map<String, Object> decodeBase64(Map<String, Object> param) {
+		
+		Map<String, Object> result = new HashMap<String, Object>();
+		
+		Set key = param.keySet();
+		Iterator iter  = key.iterator();
+		String str_key = (String) iter.next();
+		String str_value = (String) param.get(str_key);
+		str_value = str_value.substring(str_value.lastIndexOf("=") + 1);
+		
+		Decoder decoder = Base64.getDecoder(); 
+		byte[] decodedBytes = decoder.decode(str_key);
+		
+		result.put("key", new String(decodedBytes));
+		result.put("value", str_value);
+		
+		return result;
 	}
 }
 

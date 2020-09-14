@@ -1,11 +1,14 @@
 package com.dpg.cmmn;
 
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.imageio.ImageIO;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
@@ -39,7 +42,7 @@ public class FileManager {
 		@Version : 1.0
 		@Usage   : fileManage.fileUpload(byte[], String, String)
 		@Author  : Asher Kim
-		@reutrn  : String newFilename
+		@return  : String newFilename
 		@Comment : 단일 파일 업로드 및 업로드된 파일명 반환
 	 */
 	public String fileUpload(byte[] bytes, String originalFilename, String path) throws Exception {
@@ -71,7 +74,7 @@ public class FileManager {
 		@Version : 1.1
 		@Usage   : fileManage.newFileUpload(MultipartFile, Map<String, Object>, String)
 		@Author  : Asher Kim
-		@reutrn  : Map<String, Obejct> fileInfo
+		@return  : Map<String, Obejct> fileInfo
 		@Comment : 단일 파일 업로드 및 업로드된 파일 정보 반환
 	 */
 	public static Map<String, Object> newFileUpload(MultipartFile file, Map<String, Object> param, String regType) throws Exception {
@@ -114,7 +117,7 @@ public class FileManager {
 		@Version : 1.0
 		@Usage   : fileManage.multifleFileUpload(List<MultipartFile>, Map<String, Object>, String)
 		@Author  : Asher Kim
-		@reutrn  : List<Map<String, Object>> fileInfo
+		@return  : List<Map<String, Object>> fileInfo
 		@Comment : 단일 파일 업로드 및 업로드된 파일 정보 반환
 	 */
 	public static List<Map<String, Object>> multifleFileUpload(List<MultipartFile> mtpFile, Map<String, Object> param, String regType) throws Exception {
@@ -134,6 +137,8 @@ public class FileManager {
 				byte[] bytes 		= mf.getBytes();
 				long   filsSize 	= mf.getSize();
 				
+				Map<String, Object> fileWidthHeight = getWidthHeight(mf);
+				
 				if(bytes == null) return null; 
 				if(realFileName.equals("")) return null;
 				String fileExt = realFileName.substring(realFileName.lastIndexOf("."));
@@ -149,18 +154,39 @@ public class FileManager {
 				FileOutputStream fos = new FileOutputStream(pathname);
 				fos.write(bytes);
 				fos.close();
-							
-				paraMap.put("ART_NAME" , realFileName);
-				paraMap.put("ART_RNAME", newFileName);
-				paraMap.put("ART_PATH" , path);
-				paraMap.put("ART_SIZE" , filsSize);
-				paraMap.put("ART_EXTS" , fileExt);
+				
+				paraMap.put("ART_WIDTH" , fileWidthHeight.get("width"));
+				paraMap.put("ART_HEIGHT", fileWidthHeight.get("height"));
+				paraMap.put("ART_NAME"  , realFileName);
+				paraMap.put("ART_RNAME" , newFileName);
+				paraMap.put("ART_PATH"  , path);
+				paraMap.put("ART_SIZE"  , filsSize);
+				paraMap.put("ART_EXTS"  , fileExt);
 				
 				list.add(paraMap);
 			}
 		}
-		
 		return list;
+	}
+	
+	/**
+		@Version : 1.0
+		@Usage   : this.getWidthHeight(List<MultipartFile>)
+		@Author  : Asher Kim
+		@return  : Map<String, Object> result (width, height)
+		@Comment : 업로드 된 각 파일의 가로 세로값
+	 */
+	private static Map<String, Object> getWidthHeight(MultipartFile mtpFile) throws Exception {
+		Map<String, Object> result = new HashMap<String, Object>();
+		
+		BufferedImage image = ImageIO.read(mtpFile.getInputStream());
+		
+		Integer width = image.getWidth();
+		Integer height = image.getHeight();
+
+		result.put("width", width);
+		result.put("height", height);
+		return result;
 	}
 	
 }

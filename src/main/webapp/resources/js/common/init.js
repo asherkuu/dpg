@@ -1,9 +1,3 @@
-/* ===================================
--------------------
-	Version: 1.0
--------------------
-======================================*/
-
 
 $(function() {
 	
@@ -13,7 +7,7 @@ $(function() {
 		헤더 스크롤 이벤트
 	----------*/
 	$(window).on('scroll resize',function(e) {
-		if ($(this).scrollTop() > 83) {
+		if ($(this).scrollTop() > 0) {
 			$('.header').addClass('sticky');
 			$('body').addClass('pt83');
 		}else{
@@ -59,23 +53,6 @@ $(function() {
 		}		
 	});
 	
-	/*---------
-		필터 컨트롤 이벤트
-	----------*/
-	$('.filter-controls li.filter').on('click', function() {
-		$('.filter-controls li').removeClass('active');
-		$(this).addClass('active');
-	});
-	
-	if($('.gallery_warp').length > 0 ) {
-		var containerEl = document.querySelector('.gallery_warp');
-		var mixer = mixitup(containerEl);
-	}
-	
-	if($('.blog_row').length > 0 ) {
-		$('.blog_row').masonry();
-	}
-
 	/*---------
 		상단 메뉴 active 이벤트
 	----------*/
@@ -135,41 +112,5 @@ $(function() {
 		'openedSymbol': '<i class="fa fa-angle-up"></i>',
 		'closedSymbol': '<i class="fa fa-angle-right"></i>'
 	});
-	
-	/*----------
-		사진클릭 이벤트
-	----------*/
-	var filter = '';
-	
-	if(filter == '' || filter.length <= 0) {
-		filter = $(".gallery_img");
-	}
-	
-	// init
-	$(filter).magnificPopup({
-		type:'image',
-		gallery:{
-			enabled:true,
-		},
-	});
-	
-	// set
-	$('.filter-controls .filter').on("click", function(){
-		var selectedFilter = $('.filter-controls .active').text().toLowerCase();
-		
-		if(selectedFilter == "all") {
-			filter = $(".gallery_img");
-		} else {
-			filter = $(".gallery_img.set-bg." + selectedFilter);
-		}
-		
-		filter.magnificPopup({
-			type:'image',
-			gallery:{
-				enabled:true,
-			},
-		});
-	});
-	
 	
 }); 

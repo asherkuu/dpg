@@ -4,50 +4,64 @@
 <mapper namespace="com.dpg.gallery.main">
 
 	<select id="getCarouselArticle" resultType="Map">
-		SELECT CONCAT('/tmp/rscs/img/', ART_RNAME) AS FILE_PATH
-			 , ART_NUM
-			 , ART_CODE
-			 , USR_NUM
-			 , USR_ID
-			 , ART_PORD_NUM
-			 , ART_ORD_NUM
-			 , ART_NAME
-			 , ART_RNAME
-			 , ART_PATH
-			 , ART_SIZE
-			 , ART_EXTS
-			 , ART_RDATE
-			 , ART_RTIME
-             , ART_UDATE
-             , ART_UTIME
-             , TRIM(ART_TITLE) AS ART_TITLE
-             , ART_ADT_YN
-          FROM DPG_INF_ART
-         ORDER BY ART_NUM DESC
+		SELECT CONCAT('//tmp//rscs//img//', ART_RNAME) AS FILE_PATH
+			  , ART_NUM
+			  , ART_CODE
+			  , USR_NUM
+			  , USR_ID
+			  , ART_PORD_NUM
+			  , ART_ORD_NUM
+			  , ART_NAME
+			  , ART_RNAME
+			  , ART_PATH
+			  , ART_SIZE
+			  , ART_EXTS
+			  , ART_WIDTH
+			  , ART_HEIGHT
+			  , ART_RDATE
+			  , ART_RTIME
+	         , ART_UDATE
+	         , ART_UTIME
+	         , TRIM(ART_TITLE) AS ART_TITLE
+	         , ART_ADT_YN
+         FROM DPG_INF_ART
+        ORDER BY ART_NUM DESC
 	</select>
 
-	<select id="getArticles" resultType="Map">
-		SELECT CONCAT('/tmp/rscs/img/', ART_RNAME) AS FILE_PATH
-			 , ART_NUM
-			 , ART_CODE
-			 , USR_NUM
-			 , USR_ID
-			 , ART_PORD_NUM
-			 , ART_ORD_NUM
-			 , ART_NAME
-			 , ART_RNAME
-			 , ART_PATH
-			 , ART_SIZE
-			 , ART_EXTS
-			 , ART_RDATE
-			 , ART_RTIME
-             , ART_UDATE
-             , ART_UTIME
-             , TRIM(ART_TITLE) AS ART_TITLE
-             , ART_ADT_YN
-          FROM DPG_INF_ART
-         WHERE ART_ORD_NUM = '0'
-         ORDER BY ART_NUM DESC
+	<select id="getArticles" parameterType="HashMap" resultType="Map">
+		SELECT CONCAT('//tmp//rscs//img//', ART_RNAME) AS FILE_PATH
+			  , ART_NUM
+			  , ART_CODE
+			  , USR_NUM
+			  , USR_ID
+			  , ART_PORD_NUM
+			  , ART_ORD_NUM
+			  , ART_NAME
+			  , ART_RNAME
+			  , ART_PATH
+			  , ART_SIZE
+			  , ART_EXTS
+			  , ART_WIDTH
+			  , ART_HEIGHT
+			  , ART_RDATE
+			  , ART_RTIME
+			  , ART_UDATE
+			  , ART_UTIME
+			  , TRIM(ART_TITLE) AS ART_TITLE
+			  , ART_ADT_YN
+         FROM DPG_INF_ART
+        WHERE ART_ORD_NUM = '0'
+         <if test="FILTER != null and FILTER != '' and FILTER != 'all' ">
+         		<if test="FILTER != null and FILTER != '' and FILTER eq 'yet' ">
+         			AND TRIM(ART_TITLE) = ''
+         			AND ART_ADT_YN = '1'
+	         	</if>
+	         	<if test="FILTER != null and FILTER != '' and FILTER eq 'done' ">
+	         		AND TRIM(ART_TITLE) != ''
+	         		AND ART_ADT_YN = '0'
+	         	</if>
+         </if>
+        ORDER BY ART_NUM DESC
 	</select>
 	          
 </mapper>     

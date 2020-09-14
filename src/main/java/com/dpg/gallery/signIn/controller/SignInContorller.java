@@ -113,12 +113,14 @@ public class SignInContorller {
 					result.put("SUCCESS", false);
 					result.put("message", "Password is incorrect.");
 					result.put("location", "");
+					result.put("type", "");
 				} else {
 					session.setAttribute("loginUser", user);
 					
 					result.put("SUCCESS", true);
 					result.put("message", "");
 					result.put("location", "/preview/");
+					result.put("type", "");
 				}
 			}
 			

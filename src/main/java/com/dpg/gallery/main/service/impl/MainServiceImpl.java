@@ -15,7 +15,7 @@ public class MainServiceImpl implements MainService {
 	private MainDAO mainDao;
 
 	@Override
-	public List<Map<String, Object>> getArticles() throws Exception {
-		return mainDao.getArticles();
+	public List<Map<String, Object>> getArticles(Map<String, Object> param) throws Exception {
+		return mainDao.getArticles(param);
 	}
 }

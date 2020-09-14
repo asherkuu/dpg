@@ -23,4 +23,9 @@ public class ArticleServiceImpl implements ArticleService {
 	public int getParOrderNum() throws Exception {
 		return articleDao.getParOrderNum();
 	}
+
+	@Override
+	public List<Map<String, Object>> loadArticlesDetail(Map<String, Object> param) throws Exception {
+		return articleDao.loadArticlesDetail(param);
+	}
 }

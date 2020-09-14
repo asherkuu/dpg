@@ -9,4 +9,6 @@ public interface ArticleService {
 
 	public int getParOrderNum() throws Exception;
 
+	public List<Map<String, Object>> loadArticlesDetail(Map<String, Object> param) throws Exception;
+
 }

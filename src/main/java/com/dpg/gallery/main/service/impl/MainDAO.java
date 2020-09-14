@@ -16,8 +16,8 @@ public class MainDAO {
 	
 	String prefix = "com.dpg.gallery.main.";
 
-	public List<Map<String, Object>> getArticles() {
-		return sqlSession.selectList(prefix + "getArticles");
+	public List<Map<String, Object>> getArticles(Map<String, Object> param) {
+		return sqlSession.selectList(prefix + "getArticles", param);
 	}
 
 }

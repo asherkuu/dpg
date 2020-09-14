@@ -5,6 +5,6 @@ import java.util.Map;
 
 public interface MainService {
 
-	public List<Map<String, Object>> getArticles() throws Exception;
+	public List<Map<String, Object>> getArticles(Map<String, Object> param) throws Exception;
 
 }

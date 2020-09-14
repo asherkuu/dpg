@@ -1,34 +1,25 @@
 
 $(function() {	
-	
+
 	"use strict";
 	
-	var _class = {
-			
 //////////////
-// 글로벌 변수 영역
-//////////////			
-			
-			// jsp 경로
-			gJspPath : {
-				
-			},
-			
-			// 글로벌 프로퍼티
-			gProp : {
-				
-			},
-			
-			// 글로벌 파라미터
-			param : {
-				
-			},			
-			
+//글로벌 변수 영역
+//////////////	
+	
+	var g_jspPath = {}; // jsp 경로
+	var g_prop 	= {}; // 글로벌 프로퍼티
+	var g_param 	= {}; // 글로벌 파라미터	
+	
+	var _class = {
+
 //////////////
 //초기 호출 함수 영역
 //////////////			
 			
-			// 초기 호출 함수
+			/*----------
+				초기 호출 함수
+			----------*/
 			open : function(){
 				var _self = this;
 				
@@ -39,7 +30,9 @@ $(function() {
 // 기능  함수  영역
 //////////////		
 			
-			// 버튼 이벤트 함수
+			/*----------
+				버튼 이벤트 함수
+			----------*/
 			initBtnEvent :function(){
 				var _self = this;
 				
@@ -78,6 +71,9 @@ $(function() {
 
 			},
 			
+			/*----------
+				이미지 미리보기 함수
+			----------*/
 			imgsPreview : function(e) {
 				var _self = this;
 	
@@ -124,7 +120,9 @@ $(function() {
 				});// arr.forEach
 			},
 			
-
+			/*----------
+				이미지 확장자 체크 함수
+			----------*/
 			checkExtension : function(fileName, fileSize) {
 				var regex = new RegExp("(.*?)\.(jpg|jpeg|png)$");
 				var maxSize = 20971520; // 20MB

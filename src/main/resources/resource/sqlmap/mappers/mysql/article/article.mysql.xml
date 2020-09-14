@@ -3,11 +3,37 @@
 
 <mapper namespace="com.dpg.gallery.article">
 
+	<select id="loadArticlesDetail" parameterType="HashMap" resultType="Map">
+		SELECT ART_NUM
+		     , ART_CODE
+		     , USR_NUM
+		     , USR_ID
+		     , ART_PORD_NUM
+		     , ART_ORD_NUM
+		     , ART_NAME
+		     , ART_RNAME
+		     , ART_PATH
+		     , ART_SIZE
+		     , ART_EXTS
+		     , ART_WIDTH
+		     , ART_HEIGHT
+		     , ART_RDATE
+		     , ART_RTIME
+		     , ART_UDATE
+		     , ART_UTIME
+		     , TRIM(ART_TITLE) AS ART_TITLE
+		     , ART_ADT_YN
+         FROM DPG_INF_ART
+        WHERE ART_CODE = #{ART_CODE}
+        ORDER BY ART_NUM, ART_ORD_NUM
+	</select>
+
 	<select id="getParOrderNum" resultType="int">
 		SELECT IFNULL(MAX(ART_PORD_NUM), 1) + 1 AS PORDER_NUM
 		  FROM DPG_INF_ART
 		 WHERE ART_ORD_NUM = '0'
 	</select>
+
 
 	<insert id="registArticles" parameterType="java.util.List">
 		INSERT INTO DPG_INF_ART
@@ -23,6 +49,8 @@
 			, ART_PATH
 			, ART_SIZE
 			, ART_EXTS
+			, ART_WIDTH
+			, ART_HEIGHT
 			, ART_RDATE
 			, ART_RTIME
 			, ART_UDATE
@@ -44,6 +72,8 @@
 			, #{item.ART_PATH}
 			, #{item.ART_SIZE}
 			, #{item.ART_EXTS}
+			, #{item.ART_WIDTH}
+			, #{item.ART_HEIGHT}
 			, DATE_FORMAT(NOW(),"%Y%m%d")
 			, DATE_FORMAT(NOW(),"%H%i%S")
 			, DATE_FORMAT(NOW(),"%Y%m%d")

@@ -24,4 +24,8 @@ public class ArticleDAO {
 		return sqlSession.selectOne(prefix + "getParOrderNum");
 	}
 
+	public List<Map<String, Object>> loadArticlesDetail(Map<String, Object> param) throws Exception {
+		return sqlSession.selectList(prefix + "loadArticlesDetail", param);
+	}
+
 }

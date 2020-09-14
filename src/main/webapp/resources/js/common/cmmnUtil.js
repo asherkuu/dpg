@@ -7,7 +7,7 @@
 //
 
 	// 글로벌 파라미터
-	var param = {
+	var g_param = {
 		
 	};	
 
@@ -20,16 +20,21 @@
 		/**
 		 * Version 		: 1.0
 		 * function		: requestAjax
-		 * Usage   		: cmmn.util.Request.requestAjax(url, param).done(function(result){});
-		 * Description 	: Ajax 데이터 처리 함수
+		 * Usage   		: cmmn.util.Request.requestAjax(url, param, type).done(function(result){});
+		 * Description 	: Ajax 데이터 처리 함수 (등록)
 		 * Author  		: Asher Kim
 		 * Comment 		: 백엔드에 이벤트를 생성한 후 위의 Usage 처럼 해당 url 과 처리해야할 param 을 넘겨주면 아래 $.ajax 에서
-		 * 				  받아서 이벤트를 처리해준후 성공시(success) result 값을 반환하여 deferred 메소드를 통해 결과값을 넘겨준다.
+		 * 				  	받아서 이벤트를 처리해준후 성공시(success) result 값을 반환하여 deferred 메소드를 통해 결과값을 넘겨준다.
+		 * 					type 은 데이터 호출시 비동기 방식으로 호출하는지를 구분하기 위함.
 		 * 
 		 */
-		requestAjax : function(url, param) {
+		requestAjax : function(url, param, loadType) {
 			
 			var deferred = $.Deferred();
+			
+			if(loadType == "" || loadType == undefined) {
+				loadType = "";
+			}
 			
 			$.ajax({
 				url  : url,
@@ -41,11 +46,13 @@
 					deferred.resolve(result);
 					
 					if(result.message != "") {
-						if(result.SUCCESS) {
+						if(result.SUCCESS) {		
 							
-							swal(result.message, {icon : "success", button : "YEET !"}).then(function() {
-								javascript:location.href = result.location;
-							});
+							if(type != "ajax") {
+								swal(result.message, {icon : "success", button : "YEET !"}).then(function() {
+									javascript:location.href = result.location;
+								});
+							}
 						} else {
 							
 							swal(result.message, {icon : "warning", button : true}).then(function() {
@@ -75,7 +82,7 @@
 		 * Version 		: 1.0
 		 * function		: requestAjaxFileUpload
 		 * Usage   		: cmmn.util.Request.requestAjaxFileUpload(url, param).done(function(result){});
-		 * Description 	: Ajax를 통한 파일업로드 처리 함수
+		 * Description 	: Ajax를 통한 파일업로드 처리 함수 (등록)
 		 * Author  		: Asher Kim
 		 * Comment 		: 백엔드에 이벤트를 생성한 후 위의 Usage 처럼 해당 url 과 처리해야할 param 을 넘겨주면 아래 $.ajax 에서
 		 * 				  받아서 이벤트를 처리해준후 성공시(success) result 값을 반환하여 deferred 메소드를 통해 결과값을 넘겨준다.
@@ -139,8 +146,8 @@
 		initCarousel : function(sync1, sync2) {
 			var _self = this;
 			
-			param.sync1 = sync1;
-			param.sync2 = sync2;
+			g_param.sync1 = sync1;
+			g_param.sync2 = sync2;
 			
 			var syncedSecondary = true;
 			
@@ -199,7 +206,7 @@
 		},
 		
 		syncPosition : function(el) {
-		    var sync2 = param.sync2;
+		    var sync2 = g_param.sync2;
 		    
 		    var count = el.item.count - 1;
 		    var current = Math.round(el.item.index - (el.item.count / 2) - .5);
@@ -230,7 +237,7 @@
 		},
 
 		syncPosition2 : function(el) {
-			var sync1 = param.sync2;
+			var sync1 = g_param.sync2;
 			var syncedSecondary = true;
 			
 		    if (syncedSecondary) {

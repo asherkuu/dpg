@@ -58,12 +58,45 @@ public class ArticleController {
 	@ResponseBody
 	public ModelAndView loadArticles(HttpServletRequest request, ModelAndView mv) throws Exception {
 		
-		if(!CmmnUtil.isLogin(request)) {
-			mv.setViewName("gallery/article/list.ga");
-		} else {
+		if(CmmnUtil.isLogin(request)) {
 			mv.setViewName("redirect:/signIn/");
+		} else {
+			mv.setViewName("gallery/article/list.ga");
 		}
 
+		return mv;
+	}
+	
+	/**
+	 * @comment : 작품 상세 조회
+	 * @name    : loadArticleDetail()
+	 * @param   : String ART_CODE
+	 * @return  : "gallery/article/detail.ga"
+	 * @exception Exception
+	 */
+	@RequestMapping(value = "/v")
+	@ResponseBody
+	public ModelAndView loadArticleDetail(HttpServletRequest request, ModelAndView mv, @RequestParam Map<String, Object> param) throws Exception {
+		
+		List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+		Map<String, Object> paramap = new HashMap<String, Object>();
+
+		try {
+			// 컬럼네임 Base64 디코딩
+			Map<String, Object> code = CmmnUtil.decodeBase64(param);
+			paramap.put((String) code.get("key"), code.get("value"));
+			
+			list = articleService.loadArticlesDetail(paramap);
+			
+			if(list == null || list.size() <= 0) { // 조회 실패
+				mv.setViewName("redirect:/preview/");
+			} else {
+				mv.addObject("list", list);
+				mv.setViewName("gallery/article/detail.ga");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return mv;
 	}
 	
@@ -77,13 +110,12 @@ public class ArticleController {
 	@RequestMapping(value = "/regist")
 	@ResponseBody
 	public ModelAndView loadArticleRegist(HttpServletRequest request, ModelAndView mv) throws Exception {
-		
-		if(!CmmnUtil.isLogin(request)) {
-			mv.setViewName("gallery/article/regist.ga");
-		} else {
-			mv.setViewName("redirect:/signIn/");
-		}
 
+		if(CmmnUtil.isLogin(request)) {
+			mv.setViewName("redirect:/signIn/");
+		} else {
+			mv.setViewName("gallery/article/regist.ga");
+		}
 		return mv;
 	}
 
@@ -104,9 +136,13 @@ public class ArticleController {
 		int cnt = 0;
 		
 		try {	
-			
-			if(!CmmnUtil.isLogin(request)) {
-
+			if(CmmnUtil.isLogin(request)) {
+				
+				result.put("SUCCESS", false);
+				result.put("message", "Login First.");
+				result.put("location", "/signIn/");
+			} else {
+				
 				Map<String, Object> loginUser = CmmnUtil.getLoginUser(request); // 유저정보
 				String USR_ID = loginUser.get("USR_ID").toString();
 				String USR_NUM = loginUser.get("USR_NUM").toString();
@@ -122,11 +158,11 @@ public class ArticleController {
 					int parOrderNum = articleService.getParOrderNum();
 					
 					for (int i = 0; i < list.size(); i++) {
-						list.get(i).put("ART_CODE", code);
-						list.get(i).put("ART_PORD_NUM", parOrderNum);
-						list.get(i).put("ART_ORD_NUM", i);
-						list.get(i).put("USR_ID", USR_ID);
-						list.get(i).put("USR_NUM", USR_NUM);	
+						list.get(i).put("ART_CODE"		, code);
+						list.get(i).put("ART_PORD_NUM"	, parOrderNum);
+						list.get(i).put("ART_ORD_NUM"	, i);
+						list.get(i).put("USR_ID"			, USR_ID);
+						list.get(i).put("USR_NUM"		, USR_NUM);
 					}
 					
 					cnt = articleService.registArticles(list);
@@ -141,17 +177,12 @@ public class ArticleController {
 					result.put("message", "Success.");
 					result.put("location", "/article/");
 				}
-				
-			} else {
-				result.put("SUCCESS", false);
-				result.put("message", "Login First.");
-				result.put("location", "/signIn/");
 			}
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 		return ObjectMapperSupport.objectToJson(result);
 	}
 }
+
+

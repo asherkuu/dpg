@@ -84,10 +84,12 @@ public class RegistContorller {
 	public String registUser(MultipartHttpServletRequest mrequest, @RequestParam Map<String, Object> param) throws Exception {
 		
 		Map<String, Object> result = new HashMap<String, Object>();
+		
 		try {
 			boolean isExist = registService.isExistsUser(param); // 아이디 존재유무
 
 			if(!isExist) { // 아이디 존재시
+				
 				result.put("SUCCESS", false);
 				result.put("message", "");
 				result.put("location", "/signIn/isExists");
@@ -116,7 +118,6 @@ public class RegistContorller {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 		return ObjectMapperSupport.objectToJson(result);
 	}
 }
