@@ -175,7 +175,7 @@ public class ArticleController {
 				} else { // 등록 성공
 					result.put("SUCCESS", true);
 					result.put("message", "Success.");
-					result.put("location", "/article/");
+					result.put("location", "/preview/");
 				}
 			}
 		} catch (Exception e) {

@@ -2,10 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-	<div id="preloder" style="display: none;">
-		<div class="loader" style="display: none;"></div>
-	</div>
-
 	<c:choose>
 		<c:when test="${not empty sessionScope.loginuser}">
 		

@@ -23,6 +23,12 @@ $(function() {
 			open : function(){
 				var _self = this;
 				
+				// input file style
+				$('#multp_file').filestyle({
+					buttonBefore: true,
+					placeholder: "No file"
+				});
+				
 				_self.initBtnEvent();
 			},
 			
@@ -97,25 +103,25 @@ $(function() {
 					}
 
 					// div에 이미지 추가
-					var str = '<div style="display: inline-flex; padding: 10px;"><li>';
-					str += '<span>' + fileName + '</span><br>';
+					var html = "";
+					
+					html += '<div class="img_list" style="">';
+					html += 	'<li>';
 
 					// 이미지 파일 미리보기
 					if (f.type.match('image.*')) {
 
 						var reader = new FileReader();
 						reader.onload = function(e) {
-							// str += '<button type="button" class="delBtn"
-							// value="'+f.name+'" style="background:
-							// red">x</button><br>';
-							str += '<img src="' + e.target.result + '" title="' + f.name + '" width=100 height=100 />';
-							str += '</li></div>';
-							$(str).appendTo('.imgs_preview_area');
+							html += 		'<img src="' + e.target.result + '" title="' + f.name + '" width=100 height=100 />';
+							html += 	'</li>';
+							html += '</div>';
+							$(html).appendTo('.imgs_preview_area');
 						}
 						reader.readAsDataURL(f);
 					} else {
-						str += '<img src="/resources/img/fileImg.png" title="' + f.name + '" width=100 height=100 />';
-						$(str).appendTo('.imgs_preview_area');
+						html += '<img src="/resources/img/fileImg.png" title="' + f.name + '" width=100 height=100 />';
+						$(html).appendTo('.imgs_preview_area');
 					}
 				});// arr.forEach
 			},

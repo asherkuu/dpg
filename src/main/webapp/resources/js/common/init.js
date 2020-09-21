@@ -7,7 +7,7 @@ $(function() {
 		헤더 스크롤 이벤트
 	----------*/
 	$(window).on('scroll resize',function(e) {
-		if ($(this).scrollTop() > 0) {
+		if ($(this).scrollTop() > 83) {
 			$('.header').addClass('sticky');
 			$('body').addClass('pt83');
 		}else{
@@ -17,42 +17,12 @@ $(function() {
 		e.preventDefault();
 	});
 
-	/*----------
-		필터 스크롤 이벤트
-	----------*/
-	$(window).on('scroll resize',function(e) {
-		if($(document).scrollTop() > 800) {
-			$('.filter-controls').addClass('controls_fixed');
-			$('body').addClass('pt200');
-		} else {
-			$('.filter-controls').removeClass('controls_fixed');
-			$('body').removeClass('pt200');
-		}
-		e.preventDefault();
-	});
-	
 	/*---------
 		프리로더
 	----------*/
 	$(".loader").fadeOut();
-	$("#preloder").delay(250).fadeOut("slow");
-	
-	/*---------
-		메인프레임 메뉴 스크롤 이벤트
-	----------*/
-	$('.filter-controls .filter').on('click', function(e) {
-		var screenWidth = window.innerWidth;
-		if(screenWidth > 992) {
-			$('html').animate({scrollTop:770}, 500);
-		} else if(screenWidth <= 992 && screenWidth >= 768) {
-			$('html').animate({scrollTop:760}, 500);
-		} else if(screenWidth < 768 && screenWidth >= 576) {
-			$('html').animate({scrollTop:835}, 500);
-		}  else if(screenWidth <= 576 && screenWidth >= 280) {
-			$('html').animate({scrollTop:825}, 500);
-		}		
-	});
-	
+	$("#preloader").delay(250).fadeOut("slow");
+
 	/*---------
 		상단 메뉴 active 이벤트
 	----------*/
@@ -113,4 +83,20 @@ $(function() {
 		'closedSymbol': '<i class="fa fa-angle-right"></i>'
 	});
 	
+	/*---------
+		드롭다운
+	----------*/
+	$('.dropdown').click(function () {
+        $(this).attr('tabindex', 1).focus();
+        $(this).toggleClass('active');
+        $(this).find('.dropdown-menu').slideToggle(300);
+    });
+    $('.dropdown').focusout(function () {
+        $(this).removeClass('active');
+        $(this).find('.dropdown-menu').slideUp(300);
+    });
+    $('.dropdown .dropdown-menu li').click(function () {
+        $(this).parents('.dropdown').find('span').text($(this).text());
+        $(this).parents('.dropdown').find('input').attr('value', $(this).attr('id'));
+    });
 }); 

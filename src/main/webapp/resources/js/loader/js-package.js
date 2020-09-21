@@ -14,15 +14,18 @@ var AppLibFiles = {
 				
 				"resources/js/util/jquery-3.3.1.min.js",				// jquery
 				"resources/js/util/bootstrap.min.js",					// bootstrap
-				"resources/js/util/jquery.slicknav.min.js",				// jquery.slicknav
-				"resources/js/util/jquery.magnific-popup.min.js",		// jquery.magnific-popup
+				"resources/js/util/jquery.slicknav.min.js",			// jquery.slicknav
+				"resources/js/util/jquery.magnific-popup.min.js",	// jquery.magnific-popup
 				"resources/js/util/owl.carousel.min.js",				// owl.carousel
-				"resources/js/util/mixitup.min.js",						// mixitup
+				"resources/js/util/mixitup.min.js",					// mixitup
 				"resources/js/util/masonry.pkgd.min.js",				// masonry.pkgd
 				"resources/js/util/slicknav.min.js",					// slicknav
 				"resources/js/util/analytics.js",						// analytics
 				"resources/js/util/email-decode.min.js",				// email-decode
 				"resources/js/util/sweetalert.js",						// sweetalert
+				"resources/js/util/bootstrap-filestyle.min.js",		// bootstrap-filestyle
+				
+				
 				
 				/*
 				"resources/js/common/common.js",						// common
@@ -57,7 +60,7 @@ var AppLibFiles = {
 				
 				"resources/css/bootstrap.min.css",						// bootstrap
 				"resources/css/font-awesome.min.css",					// font-awesome
-				"resources/css/magnific-popup.css",						// magnific-popup
+				"resources/css/magnific-popup.css",					// magnific-popup
 				"resources/css/owl.carousel.min.css",					// owl.carousel.min
 				"resources/css/slicknav.min.css",						// slicknav
 				"resources/css/aos.css",								// aos

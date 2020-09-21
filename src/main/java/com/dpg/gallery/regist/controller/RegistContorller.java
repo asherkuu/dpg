@@ -50,13 +50,11 @@ public class RegistContorller {
 	 */
 	@RequestMapping(value = "/regist")
 	public ModelAndView loadRegist(HttpServletRequest request, ModelAndView mv) throws Exception {
-		
 		if(CmmnUtil.isLogin(request)) {
 			mv.setViewName("gallery/signIn/regist.ga");
 		} else {
 			mv.setViewName("redirect:/preview/");
 		}
-		
 		return mv;
 	} 
 	
@@ -69,6 +67,7 @@ public class RegistContorller {
 	 */
 	@RequestMapping(value = "/isExists")
 	public String loadIsExists() throws Exception {
+		// FIXME
 		return "gallery/signIn/isExists.ga";
 	}
 

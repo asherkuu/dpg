@@ -1,6 +1,5 @@
 
-	
-	
+
 $(function() {
 	
 	'use strict';
@@ -38,29 +37,18 @@ $(function() {
 		----------*/
 		initBtnEvent : function(){
 			var _self = this;			
-			
-			// 더보기 버튼 이벤트
-			$('#btnViewMore').on('click', function() {
-				javascript:location.href="/articles/v";
-			});
-			
-			// 메인 케러셀 클릭시 상세페이지 이동
-			$('.owl-stage.main_frame .owl-item').on('click', function(){
-				javascript:location.href = "/article/v?ART_CODE=" + $(this).data("id");
-			});
 
 			// 필터 컨트롤 이벤트
-			$('.filter-controls li.filter').on('click', function() {
-				$('.filter-controls li').removeClass('active');
-				$(this).addClass('active');
+			$('.header-filter .dropdown-menu>li').on('click', function() {
 				
 				var _filter = $(this).attr("id");
 				g_param.FILTER = _filter;
-				
-				// 데이터 조회
-				_self.loadArticles(g_param); 
+				_self.loadArticles(g_param); // 데이터 조회 
 			});
 			
+			$('#btnRegist').on("click", function(){
+				
+			});
 		},
 		
 		/*----------
@@ -68,14 +56,7 @@ $(function() {
 		----------*/
 		initPage : function() {
 			var _self = this;
-			
-			// 캐러셀
-			var sync1 = $(".album_slider");
-			var sync2 = $(".album_thumb_slider");
-			cmmn.util.Request.initCarousel(sync1, sync2);
-			
-			// 데이터 조회
-			_self.loadArticles();
+			_self.loadArticles(); // 데이터 조회
 		},
 		
 // ////////////
@@ -131,7 +112,14 @@ $(function() {
 					// html
 					html += "<div class='item" + grid_size +"' style='background: url(/tmp/rscs/img/" + list.ART_RNAME + ")" 
 						   +"' data-id='" + list.ART_CODE + "'>"
-					html += "		<div class='item_details'>" + list.USR_ID + " / " + item_comment + "</div>";
+						   
+				   if(list.ART_TITLE != "") { // 제목이 있는경우
+					   html += "		<div class='item_details'>" + list.USR_ID + " / " + list.ART_TITLE + "</div>";
+						item_comment = list.ART_TITLE;
+					} else {	// 아직 제목이 없는 경우
+						html += "";
+					};
+					
 					html += "</div>";
 				});
 				
